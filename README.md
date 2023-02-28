@@ -1,1 +1,7 @@
-# Patversme
+# Jaunās Mājas
+
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
