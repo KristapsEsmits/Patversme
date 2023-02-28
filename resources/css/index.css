@@ -1,5 +1,5 @@
 body {
-    margin: 1.5em;
+    margin: 0px;
     font-family: 'Poppins', sans-serif;
     min-height: 90vh;
     user-select: none;
@@ -62,4 +62,15 @@ nav ul li a{
 nav ul li a:hover{
     color: rgb(204, 0, 0);
     transition: .3s;
+}
+
+.sign{
+    font-size: 1.4rem;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0.125em solid #000000;
+    border-radius: 0.25em;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
 }
