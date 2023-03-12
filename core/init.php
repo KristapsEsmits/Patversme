@@ -27,4 +27,4 @@ spl_autoload_register(function ($class) {
 });
 
 #Includes functions
-require_once 'fuctions/sanitize.php';
+require_once 'functions/sanitize.php';
