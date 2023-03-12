@@ -64,7 +64,7 @@ class DB
             if (in_array($operator, $operators)) {
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
                 #If theres not an error return this
-                if (!$this->query($sql, array($value))->_error) {
+                if (!$this->query($sql, array($value))->error()) {
                     return $this;
                 }
             }
@@ -82,6 +82,69 @@ class DB
     public function delete($table, $where)
     {
         return $this->action('DELETE *', $table, $where);
+    }
+
+    public function insert($table, $fields = array())
+    {
+        #Check if we have data in fields
+        if (count($fields)) {
+            #Parametrs
+            $keys = array_keys($fields);
+            $values = '';
+            $x = 1;
+
+            #How many fields will be inserted
+            foreach ($fields as $field) {
+                $values .= "?";
+                #If not the last field, add a comma and space
+                if ($x < count($fields)) {
+                    $values .= ', ';
+                }
+                $x++;
+            }
+
+            #Insert (regular mqsql insert but gets data from inputs)
+            $sql = "INSERT INTO users (`" . implode('`,`', $keys) . "`)VALUES ({$values})";
+
+            #Replceses ? with data and inserts it in database
+            if ($this->query($sql, $fields)->error()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    #Update function
+    public function update($table, $id, $fields)
+    {
+        #Parametrs
+        $set = '';
+        $x = 1;
+
+        foreach ($fields as $name => $value) {
+            $set .= "{$name} = ?";
+            #If not the last field, add a comma and space
+            if ($x < count($fields)) {
+                $set .= ', ';
+            }
+            $x++;
+        }
+
+        #Update (regular mqsql update but gets data from inputs)
+        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+
+        #Replceses ? with data and inserts it in database
+        if ($this->query($sql, $fields)->error()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function results()
+    {
+        return $this->_results;
     }
 
     #Flags error
