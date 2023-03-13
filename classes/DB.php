@@ -12,7 +12,7 @@ class DB
     {
         #Creates a new PDO instance with the database connection details obtained from the Config class
         try {
-            $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'));
+            $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
         } catch (PDOException $e) { #If the connection fails, output the error message and exit
             die($e->getMessage());
         }

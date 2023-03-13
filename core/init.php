@@ -7,7 +7,7 @@ $GLOBALS['config'] = array(
         #127.0.0.1 - so you dont need to do dns lookup
         'host' => '127.0.0.1',
         'username' => 'root',
-        'pasword' => '',
+        'password' => '',
         'db' => 'patversme'
     ),
     #How long users will be remembered (cookie expiry)
