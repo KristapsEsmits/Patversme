@@ -2,51 +2,57 @@
 require_once 'core/init.php';
 
 if (Input::exists()) {
-    $validate = new Validate();
-    $validation = $validate->check(
-        $_POST,
-        array(
-            'username' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 20,
-                'unique' => 'users'
-            ),
-            'password' => array(
-                'required' => true,
-                'min' => 6
-            ),
-            'password_again' => array(
-                'required' => true,
-                'matches' => 'password'
-            ),
-            'name' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 50,
-            ),
-            'surname' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 50,
-            ),
-            'email' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 50,
-            ),
-            'phone' => array(
-                'required' => true,
-                'min' => 3,
-                'max' => 20,
+    if (Token::check(Input::get('token'))) {
+        $validate = new Validate();
+        $validation = $validate->check(
+            $_POST,
+            array(
+                'username' => array(
+                    'required' => true,
+                    'min' => 3,
+                    'max' => 20,
+                    'unique' => 'users'
+                ),
+                'password' => array(
+                    'required' => true,
+                    'min' => 6
+                ),
+                'password_again' => array(
+                    'required' => true,
+                    'matches' => 'password'
+                ),
+                'name' => array(
+                    'required' => true,
+                    'min' => 3,
+                    'max' => 50,
+                ),
+                'surname' => array(
+                    'required' => true,
+                    'min' => 3,
+                    'max' => 50,
+                ),
+                'email' => array(
+                    'required' => true,
+                    'min' => 3,
+                    'max' => 50,
+                    'email' => true,
+                ),
+                'phone' => array(
+                    'required' => true,
+                    'min' => 3,
+                    'max' => 20,
+                )
             )
-        )
-    );
+        );
 
-    if ($validation->passed()) {
-        echo 'Passed';
-    } else {
-        print_r($validation->errors());
+        if ($validation->passed()) {
+            Session::flash('success', 'You registered successfully!');
+            header('Location: index.php');
+        } else {
+            foreach ($validation->errors() as $error) {
+                echo $error, '<br>';
+            }
+        }
     }
 }
 ?>
@@ -88,5 +94,6 @@ if (Input::exists()) {
         <input type="text" name="phone" id="phone">
     </div>
 
+    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
     <input type="submit" value="Register">
 </form>
