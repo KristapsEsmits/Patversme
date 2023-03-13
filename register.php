@@ -43,8 +43,6 @@ if (Input::exists()) {
         )
     );
 
-    var_dump($validation);
-
     if ($validation->passed()) {
         echo 'Passed';
     } else {
