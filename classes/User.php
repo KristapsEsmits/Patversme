@@ -29,6 +29,7 @@ class User
                 $this->_data = $data->results()[0];
                 return true;
             }
+
         }
         return false;
     }
@@ -36,9 +37,9 @@ class User
     public function login($username = null, $password = null)
     {
         $user = $this->find($username);
-
         if ($user) {
             $salt = $this->data()->salt;
+
             if ($this->data()->password === Hash::make($password, $salt)) {
                 Session::put($this->_sessionName, $this->data()->id);
                 return true;

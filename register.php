@@ -51,7 +51,6 @@ if (Input::exists()) {
 
             $salt = Hash::salt(32);
 
-
             try {
                 $user->create(
                     array(

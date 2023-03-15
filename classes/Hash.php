@@ -11,7 +11,7 @@ class Hash
     #Method generates random bytes of specified length to be used as a salt
     public static function salt($length)
     {
-        return random_bytes($length);
+        return bin2hex(random_bytes($length));
     }
 
     #Method generates a unique hash value by using the make() method with the current timestamp as the input
