@@ -47,6 +47,21 @@ class Validate
                                 $this->addError("{$item} must be a valid email address.");
                             }
                             break;
+                        case 'not_only_numbers':
+                            if (ctype_digit($value)) {
+                                $this->addError("{$item} can't be only numbers.");
+                            }
+                            break;
+                        case 'no_numbers':
+                            if (preg_match('/\d/', $value)) {
+                                $this->addError("{$item} cannot contain numbers.");
+                            }
+                            break;
+                        case 'only_numbers':
+                            if (!ctype_digit($value)) {
+                                $this->addError("{$item} cannot contain letters.");
+                            }
+                            break;
                         default:
                             break;
                     }

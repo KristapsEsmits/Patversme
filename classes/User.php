@@ -1,4 +1,7 @@
 <?php
+/**
+ * Summary of User
+ */
 class User
 {
     private $_db,
@@ -12,6 +15,12 @@ class User
     }
 
     #Methon that will register users
+    /**
+     * Methon that will register users
+     * @param mixed $fields
+     * @throws Exception problem creating an account
+     * @return void
+     */
     public function create($fields = array())
     {
         if ($this->_db->insert('users', $fields)) {
@@ -34,7 +43,7 @@ class User
         return false;
     }
 
-    public function login($username = null, $password = null)
+    public function login($username = null, $password = null) : bool
     {
         $user = $this->find($username);
         if ($user) {

@@ -11,7 +11,8 @@ if (Input::exists()) {
                     'required' => true,
                     'min' => 3,
                     'max' => 20,
-                    'unique' => 'users'
+                    'unique' => 'users',
+                    'not_only_numbers' => true
                 ),
                 'password' => array(
                     'required' => true,
@@ -25,22 +26,25 @@ if (Input::exists()) {
                     'required' => true,
                     'min' => 3,
                     'max' => 50,
+                    'no_numbers' => true
                 ),
                 'surname' => array(
                     'required' => true,
                     'min' => 3,
                     'max' => 50,
+                    'no_numbers' => true
                 ),
                 'email' => array(
                     'required' => true,
                     'min' => 3,
                     'max' => 50,
-                    'email' => true,
+                    'email' => true
                 ),
                 'phone' => array(
                     'required' => true,
                     'min' => 3,
                     'max' => 20,
+                    'only_numbers' => true
                 )
             )
         );
