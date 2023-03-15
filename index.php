@@ -17,7 +17,7 @@ if (Session::exists('home')) {
     <link rel="icon" href="resources/img/fav.png" />
     <link rel="stylesheet" href="resources/css/index.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
 </head>
 <body>
     <div class=" hero-img">
