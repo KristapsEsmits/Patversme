@@ -29,7 +29,7 @@ if (!$username = Input::get('user')) {
             <p>Phone Number:
                 <?php echo escape($data->phone); ?>
             </P>
-
+            <li><a href="changepassword.php">Change password</a></li>
             <?php
         } else {
             Redirect::to('index.php');
