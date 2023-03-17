@@ -81,7 +81,7 @@ class DB
     #Delete function
     public function delete($table, $where)
     {
-        return $this->action('DELETE *', $table, $where);
+        return $this->action("DELETE", $table, $where);
     }
 
     public function insert($table, $fields = array())
@@ -104,7 +104,7 @@ class DB
             }
 
             #Insert (regular mqsql insert but gets data from inputs)
-            $sql = "INSERT INTO users (`" . implode('`,`', $keys) . "`)VALUES ({$values})";
+            $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
 
             #Replceses ? with data and inserts it in database
             if ($this->query($sql, $fields)->error()) {

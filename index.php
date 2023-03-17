@@ -4,7 +4,23 @@ require_once 'core/init.php';
 if (Session::exists('home')) {
     echo '<p>' . Session::flash('home') . '<p>';
 }
+
+$user = new User();
+if ($user->isLoggedIn()) {
+    ?>
+    <p>Hello<a href="#">
+            <?php echo escape($user->data()->username); ?>
+        </a>!</p>
+
+    <ul>
+        <li><a href="logout.php">Log out</a></li>
+    </ul>
+    <?php
+} else {
+    echo '<p>you need to <a href="login.php">log in</a> or <a href="register.php">register</a>';
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +33,8 @@ if (Session::exists('home')) {
     <link rel="icon" href="resources/img/fav.png" />
     <link rel="stylesheet" href="resources/css/index.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css%22%3E">
 </head>
+
 <body>
     <div class=" hero-img">
     </div>
@@ -42,6 +58,6 @@ if (Session::exists('home')) {
     <section class="footer">
 
     </section>
-    </body>
+</body>
 
 </html>
