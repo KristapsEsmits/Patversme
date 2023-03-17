@@ -3,15 +3,12 @@ require_once 'core/init.php';
 
 $user = new User();
 
-if (!$username = Input::get('user')) {
-    Redirect::to('index.php');
-} else {
+if ($username = Input::get('user')) {
     $profileUser = new User($username);
     if ($profileUser->exists()) {
         $data = $profileUser->data();
         if ($user->isLoggedIn() && $user->data()->id == $data->id) {
             ?>
-
             <h3>
                 <?php echo escape($data->username); ?>
             </h3>
@@ -30,7 +27,7 @@ if (!$username = Input::get('user')) {
             <li><a href="changepassword.php">Change password</a></li>
             <?php
         } else {
-            Redirect::to(404);
+            Redirect::to(402);
         }
     }
 }
