@@ -31,7 +31,6 @@ class User
     }
 
     #Methon that will register users
-    #something is wrong!
     public function create($fields = array())
     {
         if ($this->_db->insert('users', $fields)) {
@@ -120,5 +119,17 @@ class User
     public function isLoggedIn()
     {
         return $this->_isLoggedIn;
+    }
+
+    public function update($fields = array(), $id = null)
+    {
+        if (!$id && $this->isLoggedIn()) {
+            $id = $this->data()->id;
+        }
+
+        if ($this->_db->update('users', $id, $fields)) {
+            $error = $this->_db->error();
+            throw new Exception('There was a problem updating: ' . $error);
+        }
     }
 }
