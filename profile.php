@@ -7,9 +7,7 @@ if (!$username = Input::get('user')) {
     Redirect::to('index.php');
 } else {
     $profileUser = new User($username);
-    if (!$profileUser->exists()) {
-        Redirect::to(404);
-    } else {
+    if ($profileUser->exists()) {
         $data = $profileUser->data();
         if ($user->isLoggedIn() && $user->data()->id == $data->id) {
             ?>
@@ -32,7 +30,7 @@ if (!$username = Input::get('user')) {
             <li><a href="changepassword.php">Change password</a></li>
             <?php
         } else {
-            Redirect::to('index.php');
+            Redirect::to(404);
         }
     }
 }
