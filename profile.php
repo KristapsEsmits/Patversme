@@ -24,6 +24,7 @@ if ($username = Input::get('user')) {
             <p>Phone Number:
                 <?php echo escape($data->phone); ?>
             </P>
+            <li><a href="update.php">Update information</a></li>
             <li><a href="changepassword.php">Change password</a></li>
             <?php
         } else {
