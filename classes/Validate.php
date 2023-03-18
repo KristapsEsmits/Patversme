@@ -18,48 +18,48 @@ class Validate
                 $value = $source[$item];
 
                 if ($rule === 'required' && empty($value)) {
-                    $this->addError("{$item} is required");
+                    $this->addError("{$item} ir nepieciešams");
                 } else if (!empty($value)) {
                     switch ($rule) {
                         case 'min':
                             if (strlen($value) < $rule_value) {
-                                $this->addError("{$item} must be a minimum of {$rule_value} characters.");
+                                $this->addError("{$item} minimums {$rule_value} simboli");
                             }
                             break;
                         case 'max':
                             if (strlen($value) > $rule_value) {
-                                $this->addError("{$item} must be a maximum of {$rule_value} characters.");
+                                $this->addError("{$item} maksimums {$rule_value} simboli");
                             }
                             break;
                         case 'matches':
                             if ($value != $source[$rule_value]) {
-                                $this->addError("{$rule_value} must match {$item}");
+                                $this->addError("{$rule_value} jāsakrīt ar {$item}");
                             }
                             break;
                         case 'unique':
                             $check = $this->_db->get($rule_value, array($item, '=', $value));
                             if (is_object($check) && $check->count()) {
-                                $this->addError("{$item} already exists.");
+                                $this->addError("{$item} jau eksistē");
                             }
                             break;
                         case 'email':
                             if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                                $this->addError("{$item} must be a valid email address.");
+                                $this->addError("{$item} jābūt derīgai e-pasta adresei");
                             }
                             break;
                         case 'not_only_numbers':
                             if (ctype_digit($value)) {
-                                $this->addError("{$item} can't be only numbers.");
+                                $this->addError("{$item} nevar saturēt tikai ciparus");
                             }
                             break;
                         case 'no_numbers':
                             if (preg_match('/\d/', $value)) {
-                                $this->addError("{$item} cannot contain numbers.");
+                                $this->addError("{$item} nevar saturēt ciparus");
                             }
                             break;
                         case 'only_numbers':
                             if (!ctype_digit($value)) {
-                                $this->addError("{$item} cannot contain letters.");
+                                $this->addError("{$item} nevar saturēt burtus");
                             }
                             break;
                         default:

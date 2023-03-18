@@ -54,22 +54,58 @@ if (Input::exists()) {
 }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="password_current">Current password</label>
-        <input type="password" name="password_current" id="password_current">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="field">
-        <label for="password_new">New Password</label>
-        <input type="password" name="password_new" id="password_new">
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaunās Mājas:: Paroles maiņa</title>
+    <link rel="icon" href="resources/img/fav.png" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="resources/css/login.css">
+</head>
 
-    <div class="field">
-        <label for="password_new_again">New Password again</label>
-        <input type="password" name="password_new_again" id="password_new_again">
-    </div>
+<body>
+    <div class="container">
+        <div class="forms3">
+            <div class="form login">
+                <span class="title">Paroles maiņa</span>
+                <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
+                <form action="" method="post">
+                    <div class="field">
+                        <input type="password" class="password" name="password_current" id="password_current"
+                            placeholder="Pašreizējā parole" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
 
-    <input type="submit" value="Change">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-</form>
+                    <div class="field">
+                        <input type="password" name="password_new" id="password_new" placeholder="Jaunā parole"
+                            required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" name="password_new_again" id="password_new_again"
+                            placeholder="Atkārtoti jaunā parole" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+
+                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                    <div class="field button">
+                        <input type="submit" value="Mainīt">
+                    </div>
+                    <div class="field button">
+                        <input type="button" value="Atcelt"
+                            onclick="window.location.href='profile.php?user=<?php echo escape($user->data()->username); ?>';">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="resources/script.js"></script>
+</body>
+
+</html>

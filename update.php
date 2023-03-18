@@ -67,27 +67,64 @@ if (Input::exists()) {
 }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?php echo escape($user->data()->name); ?>">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="field">
-        <label for="surname">Surname</label>
-        <input type="text" name="surname" id="surname" value="<?php echo escape($user->data()->surname); ?>">
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaunās Mājas:: Profila dati</title>
+    <link rel="icon" href="resources/img/fav.png" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="resources/css/login.css">
+</head>
 
-    <div class="field">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="<?php echo escape($user->data()->email); ?>">
-    </div>
+<body>
+    <div class="container">
+        <div class="forms3">
+            <div class="form login">
+                <span class="title">Profila dati</span>
+                <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
 
-    <div class="field">
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" id="phone" value="<?php echo escape($user->data()->phone); ?>">
-    </div>
+                <form action="" method="post">
+                    <div class="field">
+                        <input type="text" name="name" id="name" value="<?php echo escape($user->data()->name); ?>"
+                            placeholder="Name" required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
 
-    <input type="submit" value="Change">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-</form>
+                    <div class="field">
+                        <input type="text" name="surname" id="surname"
+                            value="<?php echo escape($user->data()->surname); ?>" placeholder="Uzvārds" required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"
+                            placeholder="E-pasts" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" name="phone" id="phone" value="<?php echo escape($user->data()->phone); ?>"
+                            placeholder="Telefona numurs" required>
+                        <i class="uil uil-phone icon"></i>
+                    </div>
+
+                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                    <div class="field button">
+                        <input type="submit" value="Mainīt">
+                    </div>
+                    <div class="field button">
+                        <input type="button" value="Atcelt"
+                            onclick="window.location.href='profile.php?user=<?php echo escape($user->data()->username); ?>';">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="resources/script.js"></script>
+</body>
+
+</html>

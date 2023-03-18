@@ -1,6 +1,10 @@
 <?php
 require_once 'core/init.php';
 
+if (Session::exists('user')) {
+    Redirect::to('index.php');
+}
+
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -69,7 +73,7 @@ if (Input::exists()) {
                     )
                 );
 
-                Session::flash('home', 'You have been registered and now can log in!');
+                Session::flash('home', 'Reģistrācija veiksmīgi pabeigta!');
                 Redirect::to('index.php');
             } catch (Exception $e) {
                 die($e->getMessage());
@@ -83,43 +87,82 @@ if (Input::exists()) {
 }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>"
-            autocomplete="off">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="field">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaunās Mājas:: Reģistrēties</title>
+    <link rel="icon" href="resources/img/fav.png" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="resources/css/login.css">
+</head>
 
-    <div class="field">
-        <label for="password_again">Enter your password again</label>
-        <input type="password" name="password_again" id="password_again" value="">
-    </div>
+<body>
+    <div class="container">
+        <div class="forms2">
+            <div class="form login">
+                <span class="title">Reģistrēties</span>
+                <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
 
-    <div class="field">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?php echo Input::get('name'); ?>">
-    </div>
+                <form action="" method="post">
+                    <div class="field">
+                        <input type="text" name="username" id="username" autocomplete="off" placeholder="Lietotājvārds"
+                            required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
 
-    <div class="field">
-        <label for="surname">Surname</label>
-        <input type="text" name="surname" id="surname">
-    </div>
+                    <div class="field">
+                        <input type="password" class="password" name="password" id="password" placeholder="Parole"
+                            required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
 
-    <div class="field">
-        <label for="email">E-mail</label>
-        <input type="text" name="email" id="email">
-    </div>
+                    <div class="field">
+                        <input type="password" name="password_again" id="password_again" value=""
+                            placeholder="Parole atkārtoti" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
 
-    <div class="field">
-        <label for="phone">Phone number</label>
-        <input type="text" name="phone" id="phone">
-    </div>
+                    <div class="field">
+                        <input type="text" name="name" id="name" placeholder="Vārds" required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
 
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-    <input type="submit" value="Register">
-</form>
+                    <div class="field">
+                        <input type="text" name="surname" id="surname" placeholder="Uzvārds" required>
+                        <i class="uil uil-user icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" name="email" id="email" placeholder="E-pasts" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" name="phone" id="phone" placeholder="Telefona numurs" required>
+                        <i class="uil uil-phone icon"></i>
+                    </div>
+
+                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                    <div class="field button">
+                        <input type="submit" value="Reģistrēties">
+                    </div>
+
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Neesi vēl reģistrējies?
+                        <a href="login.php" class="text signup-link">Ienākt</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="resources/script.js"></script>
+</body>
+
+</html>
