@@ -155,7 +155,7 @@ if (Input::exists()) {
                 </form>
 
                 <div class="login-signup">
-                    <span class="text">Neesi vēl reģistrējies?
+                    <span class="text">Esi jau reģistrējies?
                         <a href="login.php" class="text signup-link">Ienākt</a>
                     </span>
                 </div>

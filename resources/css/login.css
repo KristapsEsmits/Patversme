@@ -166,3 +166,8 @@ body{
     top: 200px;
     z-index: 1;
 }
+
+.padding{
+    padding-top: 20px;
+}
+
