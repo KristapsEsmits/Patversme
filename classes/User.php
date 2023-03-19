@@ -98,6 +98,22 @@ class User
         return false;
     }
 
+    public function hasPermission($key)
+    {
+        if ($this->data() && $this->data()->group) {
+            $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
+
+            if ($group->count()) {
+                $permissions = json_decode($group->results()[0]->permissions, true);
+
+                if (isset($permissions[$key]) && $permissions[$key] == true) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public function exists()
     {
         return (!empty($this->_data)) ? true : false;

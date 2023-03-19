@@ -19,6 +19,10 @@ if ($user->isLoggedIn()) {
 } else {
     echo '<p>you need to <a href="login.php">log in</a> or <a href="register.php">register</a>';
 }
+
+if ($user->hasPermission('admin')) {
+    echo '<p>Jūs esat administrators!</p>';
+}
 ?>
 
 
