@@ -101,8 +101,10 @@ if (Input::exists()) {
                         <!--<input type="text" name="type" id="type" autocomplete="off" placeholder="Tips" required>-->
                         <i class="uil uil-list-ul  icon"></i>
                         <select type="text" name="chip" id="chip" placeholder="Vai ir čipots?">
-                            <option type="text" name="chip" id="chip">kaķis</option>
-                            <option type="text" name="chip" id="chip">suns</option>
+                            <option value="
+                            kaķis">kaķis</option>
+                            <option value="
+                            suns">suns</option>
                             <option type="text" name="chip" id="chip">cits</option>
                         </select>
                     </div>
