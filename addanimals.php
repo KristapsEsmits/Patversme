@@ -11,7 +11,7 @@ if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check(
-            $_POST,
+            array_merge($_POST, $_FILES),
             array(
                 'name' => array(
                     'required' => true,
@@ -19,7 +19,7 @@ if (Input::exists()) {
                 ),
                 'age' => array(
                     'required' => true,
-                    'only_numbers' => true
+                    'numeric' => true
                 ),
                 'type' => array(
                     'valid_select' => array(
@@ -28,13 +28,10 @@ if (Input::exists()) {
                     )
                 ),
                 'picture' => array(
-
+                    'picture' => true
                 ),
-                'chip' => array(
-
-                ),
-                'chipNumber' => array(
-                ),
+                'chip' => array(),
+                'chipNumber' => array(),
             )
         );
 
@@ -42,13 +39,15 @@ if (Input::exists()) {
             #Gives access to database
             $animals = new Animal();
             $chip = Input::get('chip') ? true : false;
-
+            
             // process file upload
             $picture = '';
             if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
                 $target_dir = "uploads/";
                 $file_name = basename($_FILES["picture"]["name"]);
                 $target_file = $target_dir . $file_name;
+                $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
                 $upload_ok = move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
                 if ($upload_ok) {
                     $picture = $target_file;
@@ -128,7 +127,8 @@ if (Input::exists()) {
                     </div>
 
                     <div class="field">
-                        <input type="file" name="picture" id="picture" placeholder="Bilde" required>
+                        <input type="file" name="picture" id="picture" placeholder="Bilde"
+                            accept="image/png, image/gif, image/jpeg" required>
                         <i class="uil uil-images  icon"></i>
                     </div>
 

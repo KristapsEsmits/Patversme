@@ -15,7 +15,11 @@ class Validate
         foreach ($items as $item => $rules) {
             foreach ($rules as $rule => $rule_value) {
 
-                $value = $source[$item];
+                if (isset($source[$item])) {
+                    $value = $source[$item];
+                } else {
+                    $value = null; // or some default value
+                }
 
                 if ($rule === 'required' && empty($value)) {
                     $this->addError("{$item} ir nepieciešams");
@@ -60,6 +64,20 @@ class Validate
                         case 'only_numbers':
                             if (!ctype_digit($value)) {
                                 $this->addError("{$item} nevar saturēt burtus");
+                            }
+                            break;
+                        case 'numeric':
+                            if (!is_numeric($value)) {
+                                $this->addError("{$item} jābūt skaitlim");
+                            }
+                            break;
+                        case 'picture':
+                            $target_dir = "uploads/";
+                            $file_name = basename($_FILES["picture"]["name"]);
+                            $target_file = $target_dir . $file_name;
+                            $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                            if (!in_array($file_type, array('jpg', 'jpeg', 'png', 'gif'))) {
+                                $this->addError("{$item} files are only allowed");
                             }
                             break;
                         default:
