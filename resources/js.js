@@ -1,3 +1,14 @@
+function toggleChipNumber() {
+    var chipCheckbox = document.getElementById("chip");
+    var chipNumberField = document.getElementById("chipNumberField");
+
+    if (chipCheckbox.checked == true) {
+        chipNumberField.style.display = "block";
+    } else {
+        chipNumberField.style.display = "none";
+    }
+}
+
 const container = document.querySelector(".container"),
       pwShowHide = document.querySelectorAll(".showHidePw"),
       pwFields = document.querySelectorAll(".password"),
@@ -24,3 +35,4 @@ const container = document.querySelector(".container"),
             }) 
         })
     })
+

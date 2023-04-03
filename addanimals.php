@@ -22,13 +22,16 @@ if (Input::exists()) {
                     'only_numbers' => true
                 ),
                 'type' => array(
-
+                    'valid_select' => array(
+                        'required' => true,
+                        'in_array' => array('kaķis', 'suns', 'cits')
+                    )
                 ),
                 'picture' => array(
 
                 ),
                 'chip' => array(
-                    'required' => true,
+
                 ),
                 'chipNumber' => array(
                 ),
@@ -38,6 +41,7 @@ if (Input::exists()) {
         if ($validation->passed()) {
             #Gives access to database
             $animals = new Animal();
+            $chip = Input::get('chip') ? true : false;
 
             try {
                 $animals->create(
@@ -46,7 +50,7 @@ if (Input::exists()) {
                         'age' => Input::get('age'),
                         'type' => Input::get('type'),
                         'picture' => Input::get('picture'),
-                        'chip' => Input::get('chip'),
+                        'chip' => $chip,
                         'chipNumber' => Input::get('chipNumber'),
                     )
                 );
@@ -98,15 +102,15 @@ if (Input::exists()) {
                     </div>
 
                     <div class="field">
-                        <!--<input type="text" name="type" id="type" autocomplete="off" placeholder="Tips" required>-->
-                        <i class="uil uil-list-ul  icon"></i>
-                        <select type="text" name="chip" id="chip" placeholder="Vai ir čipots?">
-                            <option value="
-                            kaķis">kaķis</option>
-                            <option value="
-                            suns">suns</option>
-                            <option type="text" name="chip" id="chip">cits</option>
-                        </select>
+                        <div class="field">
+                            <i class="uil uil-list-ul  icon"></i>
+                            <select name="type" id="type" placeholder="Tips">
+                                <option value="kaķis">kaķis</option>
+                                <option value="suns">suns</option>
+                                <option value="cits">cits</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="field">
@@ -115,16 +119,16 @@ if (Input::exists()) {
                     </div>
 
                     <div class="field">
-                        <input type="text" name="chip" id="chip" autocomplete="off" placeholder="Vai ir čipots?"
-                            required>
-                        <i class="uil uil-circuit  icon"></i>
+                        <label for="chip">Vai ir čipots?</label>
+                        <input type="checkbox" name="chip" id="chip" onclick="toggleChipNumber()">
                     </div>
 
-                    <div class="field">
+                    <div class="field" id="chipNumberField" style="display:none;">
                         <input type="text" name="chipNumber" id="chipNumber" autocomplete="off"
-                            placeholder="Čipa numurs" required>
+                            placeholder="Čipa numurs">
                         <i class="uil uil-circuit icon"></i>
                     </div>
+
 
                     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                     <div class="field button">
@@ -135,7 +139,7 @@ if (Input::exists()) {
             </div>
         </div>
     </div>
-    <script src="resources/script.js"></script>
+    <script src="resources/js.js"></script>
 </body>
 
 </html>
