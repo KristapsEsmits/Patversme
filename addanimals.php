@@ -43,20 +43,34 @@ if (Input::exists()) {
             $animals = new Animal();
             $chip = Input::get('chip') ? true : false;
 
+            // process file upload
+            $picture = '';
+            if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
+                $target_dir = "uploads/";
+                $file_name = basename($_FILES["picture"]["name"]);
+                $target_file = $target_dir . $file_name;
+                $upload_ok = move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
+                if ($upload_ok) {
+                    $picture = $target_file;
+                } else {
+                    die("File upload failed");
+                }
+            }
+
             try {
                 $animals->create(
                     array(
                         'name' => Input::get('name'),
                         'age' => Input::get('age'),
                         'type' => Input::get('type'),
-                        'picture' => Input::get('picture'),
+                        'picture' => $picture,
                         'chip' => $chip,
                         'chipNumber' => Input::get('chipNumber'),
                     )
                 );
 
-                Session::flash('panel.php', 'Dzīvnieks pievienots!');
-                Redirect::to('panel.php');
+                Session::flash('admin.php', 'Dzīvnieks pievienots!');
+                Redirect::to('admin.php');
             } catch (Exception $e) {
                 die($e->getMessage());
             }
@@ -89,7 +103,7 @@ if (Input::exists()) {
                 <span class="title">Pievienot dzīvnieku</span>
                 <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
 
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="field">
                         <input type="text" name="name" id="name" autocomplete="off" placeholder="Dzīvnieka vārds"
                             required>
@@ -114,7 +128,7 @@ if (Input::exists()) {
                     </div>
 
                     <div class="field">
-                        <input type="file" name="picture" id="picture" autocomplete="off" placeholder="Bilde" required>
+                        <input type="file" name="picture" id="picture" placeholder="Bilde" required>
                         <i class="uil uil-images  icon"></i>
                     </div>
 
