@@ -49,8 +49,15 @@ if ($user->isLoggedIn()) {
                     <li><a class="nav-link" href="#">Sākums</a></li>
                     <li><a class="nav-link" href="#">Par mums</a></li>
                     <li id="border"><a class="nav-link" href="#">Kontakti</a></li>
-                    <li><a class="nav-link" href="login.php">Ienākt</a></li>
-                    <li><a class="nav-link" href="register.php">Reģistrēties</a></li>
+                    <?php
+                    $user = new User();
+                    if ($user->isLoggedIn()) {
+                        echo '<li><a class="nav-link" href="logout.php">Iziet</a></li>';
+                    } else {
+                        echo '<li><a class="nav-link" href="login.php">Ienākt</a></li>
+                              <li><a class="nav-link" href="register.php">Reģistrēties</a></li>';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
