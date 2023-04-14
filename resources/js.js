@@ -1,3 +1,9 @@
+let myCarousel = document.querySelector('#carousel')
+  let carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 5000, 
+    wrap: true     
+  })
+
 function toggleChipNumber() {
     var chipCheckbox = document.getElementById("chip");
     var chipNumberField = document.getElementById("chipNumberField");

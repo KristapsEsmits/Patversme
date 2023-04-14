@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background: #f1fbff;
+}
+
+.section-padding {
+	padding: 60px 0;
+}
+
+.carousel-item {
+	height: 100vh;
+	min-height: 300px;
+}
+
+.carousel-caption {
+	bottom: 220px;
+	z-index: 2;
+}
+
+.carousel-caption h5 {
+	font-size: 45px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 25px;
+}
+
+.carousel-caption p {
+	width: 60%;
+	margin: auto;
+	font-size: 18px;
+	line-height: 1.9;
+}
+
+.carousel-inner:before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+}
+
+.navbar{
+	font-size: 18px;
+	font-weight: 500;
+	color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #000000;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: rgb(170, 18, 18);
+}
+
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+}
+
+.portfolio .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.team .card {
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.team .card-body i {
+	font-size: 20px;
+}
+
+.logo{
+	padding-top: 15px;
+    float: right;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+}
+
+span{
+    color: rgb(170, 18, 18);
+}
+
+.logoimg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.cover{
+	width: 100%;
+	height:100%;
+}
+
+#border{
+	border-right: 1px solid #d2d1d3;
+}
+
+.round{
+	width: 128px;
+   height: 128px;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.carousel-caption {
+		bottom: 370px;
+	}
+
+	.carousel-caption p {
+		width: 100%;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	.img-area img {
+		width: 100%;
+	}
+
+	#border{
+		border-right: none;
+	}
+
+}
+@media only screen and (max-width: 767px) {
+	.carousel-caption {
+		bottom: 125px;
+	}
+
+	.carousel-caption h5 {
+		font-size: 17px;
+	}
+
+	.carousel-caption a {
+		padding: 10px 15px;
+		font-size: 15px;
+	}
+
+	.carousel-caption p {
+		width: 100%;
+		line-height: 1.6;
+		font-size: 12px;
+	}
+
+	.about-text {
+		padding-top: 50px;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	#border{
+		border-right: none;
+	}
+
+}
