@@ -4,19 +4,6 @@ require_once 'core/init.php';
 if (Session::exists('home')) {
     echo '<p>' . Session::flash('home') . '<p>';
 }
-
-$user = new User();
-if ($user->isLoggedIn()) {
-    ?>
-    <p>Hello<a href="profile.php?user=<?php echo escape($user->data()->username); ?>">
-            <?php echo escape($user->data()->username); ?>
-        </a>!</p>
-
-    <ul>
-        <li><a href="logout.php">Log out</a></li>
-    </ul>
-    <?php
-}
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +36,15 @@ if ($user->isLoggedIn()) {
                     <li><a class="nav-link" href="#">Sākums</a></li>
                     <li><a class="nav-link" href="#">Par mums</a></li>
                     <li id="border"><a class="nav-link" href="#">Kontakti</a></li>
+                    <?php
+                    $user = new User();
+                    if ($user->isLoggedIn()) {
+                        ?>
+                        <li><a class="nav-link"
+                                href="profile.php?user=<?php echo escape($user->data()->username); ?>">Profils</a></li>
+                        <?php
+                    }
+                    ?>
                     <?php
                     $user = new User();
                     if ($user->isLoggedIn()) {
