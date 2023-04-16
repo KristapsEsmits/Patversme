@@ -3,9 +3,24 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
-body {
+html, body {
+	height: 100%;
+  }
+  
+  body {
+	display: flex;
+	flex-direction: column;
 	background: #f1fbff;
-}
+  }
+  
+  main {
+	flex: 1;
+  }
+  
+  footer {
+	margin-top: auto;
+	padding: 20px 0;
+  }
 
 .section-padding {
 	padding: 60px 0;
@@ -111,11 +126,59 @@ span{
     object-fit: cover;
 }
 
+.minilogo{
+	float: right;
+	margin-right: 120px;
+	padding-top: 25px;
+}
 
+.single-box p {
+	color: #000000;
+	line-height: 1.9;
+}
+
+.single-box h3 {
+	font-size: 16px;
+	font-weight: 700;
+	color: #000000;
+}
+
+.single-box .card-area i {
+	color: #000000;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.single-box ul {
+	list-style: none;
+	padding: 0;
+}
+
+.single-box ul li a {
+	text-decoration: none;
+	color: #000000;
+	line-height: 2.5;
+	font-weight: 100;
+}
+
+.single-box h2 {
+	color: #000000;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.socials i {
+	font-size: 18px;
+	margin-right: 15px;
+}
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.carousel-caption {
 		bottom: 370px;
+	}
+
+	.single-box {
+		margin-bottom: 50px;
 	}
 
 	.carousel-caption p {
@@ -138,6 +201,10 @@ span{
 @media only screen and (max-width: 767px) {
 	.carousel-caption {
 		bottom: 125px;
+	}
+
+	.single-box {
+		margin-bottom: 50px;
 	}
 
 	.carousel-caption h5 {

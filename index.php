@@ -12,10 +12,11 @@
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <?php include 'includes/nav.php'; ?>
+    <?php include 'includes/nav.php' ?>
     <!------------->
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -32,7 +33,7 @@
                     <h5>Lorem ipsum</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
                         excepturi quas vero.</p>
-                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                    <p><a href="#" class="btn btn-warning mt-3">Uzzināt vairāk!</a></p>
                 </div>
             </div>
 
@@ -42,7 +43,7 @@
                     <h5>Lorem ipsum</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
                         excepturi quas vero.</p>
-                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                    <p><a href="#" class="btn btn-warning mt-3">Uzzināt vairāk!</a></p>
                 </div>
             </div>
 
@@ -52,7 +53,7 @@
                     <h5>Lorem ipsum</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
                         excepturi quas vero.</p>
-                    <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p>
+                    <p><a href="#" class="btn btn-warning mt-3">Uzzināt vairāk!</a></p>
                 </div>
             </div>
         </div>
@@ -83,7 +84,7 @@
                             explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum
                             explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio
                             est non earum?</p>
-                        <a href="#" class="btn btn-warning">Learn More</a>
+                        <a href="about.php" class="btn btn-warning">Uzzināt vairāk!</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +110,7 @@
                             <h3 class="card-title">Lorem ipsum</h3>
                             <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
                                 modi temporibus alias iste. Accusantium?</p>
-                            <button class="btn bg-warning text-dark">vairāk</button>
+                            <button class="btn bg-warning text-dark">Uzzināt vairāk!</button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +123,7 @@
                             <h3 class="card-title">Lorem ipsum</h3>
                             <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
                                 modi temporibus alias iste. Accusantium?</p>
-                            <button class="btn bg-warning text-dark">vairāk</button>
+                            <button class="btn bg-warning text-dark">Uzzināt vairāk!</button>
                         </div>
                     </div>
                 </div>
@@ -135,7 +136,7 @@
                             <h3 class="card-title">Lorem ipsum</h3>
                             <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi
                                 modi temporibus alias iste. Accusantium?</p>
-                            <button class="btn bg-warning text-dark">vairāk</button>
+                            <button class="btn bg-warning text-dark">Uzzināt vairāk!</button>
                         </div>
                     </div>
                 </div>
@@ -197,11 +198,7 @@
         </div>
     </section>
     <!------------->
-    <footer class="bg-dark p-2 text-center" id="footer">
-        <div class="container">
-            <p class="text-white">Info</p>
-        </div>
-    </footer>
+    <?php include 'includes/footer.php' ?>
     <script src="resources/bootstrap.bundle.min.js"></script>
     <script src="resources/script.js"></script>
 </body>
