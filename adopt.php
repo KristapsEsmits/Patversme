@@ -1,10 +1,4 @@
-<?php
-require_once 'core/init.php';
-
-if (Session::exists('home')) {
-    echo '<p>' . Session::flash('home') . '<p>';
-}
-?>
+<?php include 'includes/logedin.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,3 +47,5 @@ if (Session::exists('home')) {
         ?>
     </div>
 </body>
+
+</html>
