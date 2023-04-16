@@ -61,7 +61,7 @@
         }
     }
     ?>
-
+    <script src="resources/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

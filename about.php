@@ -16,4 +16,7 @@
 
 <body>
     <?php include 'includes/nav.php'; ?>
+    <script src="resources/bootstrap.bundle.min.js"></script>
 </body>
+
+</html>

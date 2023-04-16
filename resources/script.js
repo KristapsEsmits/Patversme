@@ -1,6 +1,6 @@
 let myCarousel = document.querySelector('#carousel')
   let carousel = new bootstrap.Carousel(myCarousel, {
-    interval: 1, 
+    interval: 5000, 
     wrap: true     
   })
 

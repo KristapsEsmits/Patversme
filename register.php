@@ -94,18 +94,22 @@ if (Input::exists()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaunās Mājas:: Reģistrēties</title>
+    <title>Jaunās Mājas: Reģistrēties</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/login.css">
+</head>
 </head>
 
 <body>
-    <div class="container">
+    <?php include 'includes/nav.php'; ?>
+    <div class="cot">
         <div class="forms2">
             <div class="form login">
                 <span class="title">Reģistrēties</span>
-                <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
+                <img class="log2" src="resources/img/fav.png" alt="Company Logo">
 
                 <form action="" method="post">
                     <div class="field">
@@ -162,6 +166,7 @@ if (Input::exists()) {
             </div>
         </div>
     </div>
+    <script src="resources/bootstrap.bundle.min.js"></script>
     <script src="resources/script.js"></script>
 </body>
 

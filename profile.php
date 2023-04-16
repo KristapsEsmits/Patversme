@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaunās Mājas:: Profila dati</title>
+    <title>Jaunās Mājas: Profila dati</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/login.css">
 </head>
 
 <body>
     <?php
     require_once 'core/init.php';
+    include 'includes/nav.php';
 
     $user = new User();
 
@@ -23,13 +27,13 @@
             $data = $profileUser->data();
             if ($user->isLoggedIn() && $user->data()->id == $data->id) {
                 ?>
-                <div class="container">
+                <div class="cot">
                     <div class="forms">
                         <div class="form login">
                             <h3 class="title">
                                 <?php echo escape($data->username); ?>
                             </h3>
-                            <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
+                            <img class="log2" src="resources/img/fav.png" alt="Company Logo">
                             <p class="padding">Vārds:
                                 <?php echo escape($data->name); ?>
                             </P>
@@ -59,6 +63,7 @@
         }
     }
     ?>
+                <script src="resources/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

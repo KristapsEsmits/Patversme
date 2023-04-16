@@ -17,7 +17,7 @@
 <body>
     <?php include 'includes/nav.php'; ?>
 
-    <div id="box" class="row">
+    <div class="row">
         <?php
         $db = DB::getInstance();
         $animals = $db->query("SELECT * FROM animals")->results();
@@ -25,12 +25,12 @@
         // Loop through the animals and display their information
         foreach ($animals as $animal) {
             ?>
-            <div id="box" class="col-10 col-md-10 col-lg-2">
+            <div class="col-10 col-md-10 col-lg-2">
                 <div class="card text-light text-center bg-white pb-2">
                     <div class="card-body text-dark">
                         <div class="img-area mb-4">
-                            <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="300"
-                                height="200">
+                            <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="250"
+                                height="150">
                         </div>
                         <h3 class="card-title">
                             <?php echo $animal->name; ?>
@@ -46,6 +46,7 @@
         }
         ?>
     </div>
+    <script src="resources/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
