@@ -27,6 +27,10 @@ html, body {
 	padding: 60px 0;
 }
 
+.navmargin{
+	margin-top: 80px;
+}
+
 .carousel-item {
 	height: 100vh;
 	min-height: 300px;

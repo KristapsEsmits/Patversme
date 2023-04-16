@@ -79,11 +79,11 @@
                 <div class="col-lg-8 col-md-12 col-12 ps-lg-5">
                     <div class="about-text">
                         <h2>Par mums <br /> Mūsu stāsts:</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda
-                            eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora,
-                            explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum
-                            explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio
-                            est non earum?</p>
+                        <p>Biedrība “Jaunās mājas” tika izveeidota 2023. gada 10. februārī.Biedrība par saviem
+                            uzdevumiem ir noteikusi dzīvnieku tiesību aizsardzību, patversmju uzturēšanu, sabiedrības
+                            izglītošanu dzīvnieku aizsardzības un labturības jautājumos, kā arī likumdošanas sakārtošanā
+                            Latvijā ar šiem jautājumiem saistītās jomās. Ikdienā tiek izskatīti neskaitāmi ziņojumi par
+                            cilvēku cietsirdīgu izturēšanos pret dzīvniekiem Latvijā.</p>
                         <a href="about.php" class="btn btn-warning">Uzzināt vairāk!</a>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <img src="resources/img/dog4.jpg" class="round">
-                            <h3 class="card-title py-2">Lorem ipsum</h3>
+                            <h3 class="card-title py-2">Hunters</h3>
                             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
                                 nostrum illo tempora esse quibusdam.</p>
                         </div>
@@ -168,7 +168,7 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <img src="resources/img/cat4.jpg" class="round">
-                            <h3 class="card-title py-2">Lorem ipsum</h3>
+                            <h3 class="card-title py-2">Mince</h3>
                             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
                                 nostrum illo tempora esse quibusdam.</p>
                         </div>
@@ -178,7 +178,7 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <img src="resources/img/dog3.webp" class="round">
-                            <h3 class="card-title py-2">Lorem ipsum</h3>
+                            <h3 class="card-title py-2">Lapsiņa</h3>
                             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
                                 nostrum illo tempora esse quibusdam.</p>
                         </div>
@@ -188,7 +188,7 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <img src="resources/img/kidcat.jpg" class="round">
-                            <h3 class="card-title py-2">Lorem ipsum</h3>
+                            <h3 class="card-title py-2">Mikus</h3>
                             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
                                 nostrum illo tempora esse quibusdam.</p>
                         </div>
