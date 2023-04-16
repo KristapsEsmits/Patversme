@@ -35,9 +35,9 @@
                         <h3 class="card-title">
                             <?php echo $animal->name; ?>
                         </h3>
-                        <a href="animalprofile.php?id=<?php echo escape($animal->animalID); ?>">
-                            <button class="btn bg-warning text-dark">vairāk</button>
-                        </a>
+                        <button class="btn bg-warning text-dark"
+                            onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
+
 
                     </div>
                 </div>

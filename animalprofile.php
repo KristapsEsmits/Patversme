@@ -16,6 +16,52 @@
 
 <body>
     <?php include 'includes/nav.php'; ?>
+
+    <?php
+    require_once 'core/init.php';
+
+    // Retrieve the animalID parameter from the URL when the "Vairāk" button is clicked
+    $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
+
+    if (!$animalID) {
+        // If no animalID is provided, display an error message
+        echo "Animal not found.";
+    } else {
+        // Get the animal details from the database using the animalID
+        $db = DB::getInstance();
+        $animal = $db->query("SELECT * FROM animals WHERE animalID = ?", array($animalID))->results()[0];
+
+        // Check if the animal exists
+        if (!$animal) {
+            // Animal doesn't exist, display an error message
+            echo "Animal not found.";
+        } else {
+            // Animal exists, display its details
+            ?>
+            <div class="animal">
+                <h3>
+                    <?php echo $animal->name; ?>
+                </h3>
+                <img src="<?php echo $animal->image; ?>" alt="<?php echo $animal->name; ?>" width="128" height="128">
+                <p>Vecums:
+                    <?php echo $animal->age; ?>
+                </p>
+                <p>Apakštips:
+                    <?php echo $animal->type; ?>
+                </p>
+                <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>">
+                <p>Vai ir čipēts:
+                    <?php echo $animal->chip; ?>
+                </p>
+                <p>Vai ir čipēts:
+                    <?php echo $animal->chipNumber; ?>
+                </p>
+            </div>
+            <?php
+        }
+    }
+    ?>
+
 </body>
 
 </html>
