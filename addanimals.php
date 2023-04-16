@@ -39,7 +39,7 @@ if (Input::exists()) {
             #Gives access to database
             $animals = new Animal();
             $chip = Input::get('chip') ? true : false;
-            
+
             // process file upload
             $picture = '';
             if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
@@ -92,15 +92,18 @@ if (Input::exists()) {
     <title>Jaunās Mājas:: Pievienot dzīvnieku</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/login.css">
 </head>
 
 <body>
-    <div class="container">
+    <?php include 'includes/nav.php'; ?>
+    <div class="cot">
         <div class="forms2">
             <div class="form login">
                 <span class="title">Pievienot dzīvnieku</span>
-                <img class="logoimg" src="resources/img/fav.png" alt="Company Logo">
+                <img class="log2" src="resources/img/fav.png" alt="Company Logo">
 
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="field">

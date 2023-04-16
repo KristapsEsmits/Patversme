@@ -18,34 +18,83 @@
 <body>
     <?php include 'includes/nav.php'; ?>
 
-    <div class="row">
-        <?php
-        $db = DB::getInstance();
-        $animals = $db->query("SELECT * FROM animals")->results();
-
-        // Loop through the animals and display their information
-        foreach ($animals as $animal) {
-            ?>
-            <div class="col-10 col-md-10 col-lg-2">
-                <div class="card text-light text-center bg-white pb-2">
-                    <div class="card-body text-dark">
-                        <div class="img-area mb-4">
-                            <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="250"
-                                height="150">
-                        </div>
-                        <h3 class="card-title">
-                            <?php echo $animal->name; ?>
-                        </h3>
-                        <button class="btn bg-warning text-dark"
-                            onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
-
-
+    <div class="container my-4 p-3">
+        <div>
+            <div class="col-12 col-md-2">
+                <h4>Filtrs:</h4>
+                <form action="" method="get">
+                    <div class="form-group">
+                        <label for="type">Tips:</label>
+                        <select class="form-control" name="type" id="type">
+                            <option value="">Visi</option>
+                            <option value="suns">Suņi</option>
+                            <option value="kaķis">Kaķi</option>
+                            <option value="cits">Citi dzīvnieki</option>
+                        </select>
                     </div>
+                    <div class="form-group">
+                        <label for="age">Vecums:</label>
+                        <select class="form-control" name="age" id="age">
+                            <option value="">Visi</option>
+                            <option value="<1">No 0 līdz 1</option>
+                            <option value=">=1 AND age <=5">No 1 līdz 5 gadi</option>
+                            <option value=">5">Vairāk nekā 5 gadi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Pieejamība:</label>
+                        <select class="form-control" name="availability" id="availability">
+                            <option value="">Visi</option>
+                            <option value="available">Pieejami</option>
+                            <option value="not_available">Nepieejami</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrēt</button>
+                </form>
+            </div>
+            <div class="col-12 col-md-10">
+                <div class="row">
+                    <?php
+                    $db = DB::getInstance();
+                    $query = "SELECT * FROM animals WHERE 1=1";
+                    if (isset($_GET['type']) && !empty($_GET['type'])) {
+                        $query .= " AND type='" . $_GET['type'] . "'";
+                    }
+                    if (isset($_GET['age']) && !empty($_GET['age'])) {
+                        $query .= " AND age" . urldecode($_GET['age']);
+                    }
+                    if (isset($_GET['availability']) && !empty($_GET['availability'])) {
+                        if ($_GET['availability'] == 'available') {
+                            $query .= " AND available=1";
+                        } else {
+                            $query .= " AND available=0";
+                        }
+                    }
+                    $animals = $db->query($query)->results();
+                    //Loop through the animals and display their information
+                    foreach ($animals as $animal) {
+                        ?>
+                        <div class="col-10 col-md-10 col-lg-2">
+                            <div class="card text-light text-center bg-white pb-2">
+                                <div class="card-body text-dark">
+                                    <div class="img-area mb-4">
+                                        <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>"
+                                            width="250" height="150">
+                                    </div>
+                                    <h3 class="card-title">
+                                        <?php echo $animal->name; ?>
+                                    </h3>
+                                    <button class="btn bg-warning text-dark"
+                                        onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
-            <?php
-        }
-        ?>
+        </div>
     </div>
     <?php include 'includes/footer.php' ?>
     <script src="resources/bootstrap.bundle.min.js"></script>
