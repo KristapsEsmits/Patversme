@@ -53,7 +53,7 @@
                 <p>Vai ir čipēts:
                     <?php echo $animal->chip; ?>
                 </p>
-                <p>Vai ir čipēts:
+                <p>Čipa numurs:
                     <?php echo $animal->chipNumber; ?>
                 </p>
             </div>

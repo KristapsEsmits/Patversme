@@ -2,6 +2,13 @@
 include 'includes/logedin.php';
 require_once 'core/init.php';
 
+$user = new User();
+
+if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
+    Redirect::to('index.php');
+}
+
+
 // database connection parameters
 $host = '127.0.0.1';
 $username = 'root';
