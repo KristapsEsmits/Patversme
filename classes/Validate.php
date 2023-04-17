@@ -76,7 +76,7 @@ class Validate
                             $file_name = basename($_FILES["picture"]["name"]);
                             $target_file = $target_dir . $file_name;
                             $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                            if (!in_array($file_type, array('jpg', 'jpeg', 'png', 'gif'))) {
+                            if (!in_array($file_type, array('jpg', 'jpeg', 'png', 'gif', 'webp'))) {
                                 $this->addError("{$item} files are only allowed");
                             }
                             break;

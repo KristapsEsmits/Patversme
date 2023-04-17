@@ -123,7 +123,6 @@ if (Input::exists()) {
 
                     <div class="field">
                         <div class="field">
-                            <i class="uil uil-list-ul  icon"></i>
                             <select name="type" id="type" placeholder="Tips">
                                 <option value="kaķis">kaķis</option>
                                 <option value="suns">suns</option>
@@ -135,7 +134,7 @@ if (Input::exists()) {
 
                     <div class="field">
                         <input type="file" name="picture" id="picture" placeholder="Bilde"
-                            accept="image/png, image/gif, image/jpeg" required>
+                            accept="image/png, image/gif, image/jpeg, image/webp" required>
                         <i class="uil uil-images  icon"></i>
                     </div>
 

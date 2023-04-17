@@ -3,7 +3,7 @@ let myCarousel = document.querySelector('#carousel')
     interval: 5000, 
     wrap: true     
   })
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 function toggleChipNumber() {
     var chipCheckbox = document.getElementById("chip");
     var chipNumberField = document.getElementById("chipNumberField");
@@ -14,7 +14,7 @@ function toggleChipNumber() {
         chipNumberField.style.display = "none";
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 const container = document.querySelector(".container"),
       pwShowHide = document.querySelectorAll(".showHidePw"),
       pwFields = document.querySelectorAll(".password"),
@@ -41,4 +41,25 @@ const container = document.querySelector(".container"),
             }) 
         })
     })
+//////////////////////////////////////////////////////////////////////////////////////////////
+let type = localStorage.getItem('type');
+let age = localStorage.getItem('age');
+let availability = localStorage.getItem('availability');
 
+// Set the values of the dropdown menus if they exist in the local storage
+if (type) {
+    document.querySelector('#type [value="' + type + '"]').selected = true;
+}
+if (age) {
+    document.querySelector('#age [value="' + age + '"]').selected = true;
+}
+if (availability) {
+    document.querySelector('#availability [value="' + availability + '"]').selected = true;
+}
+
+// Store the values of the dropdown menus in the local storage when they are changed
+document.querySelectorAll('[data-name]').forEach(function(select) {
+    select.addEventListener('change', function() {
+        localStorage.setItem(select.dataset.name, select.value);
+    });
+});

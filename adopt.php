@@ -19,13 +19,12 @@
     <?php include 'includes/nav.php'; ?>
 
     <div class="container my-4 p-3">
-        <div>
-            <h4>Filtrs:</h4>
+        <div class="navmargin">
             <form action="" method="get" class="d-flex flex-column align-items-center">
                 <div class="form-group d-flex flex-row w-100 justify-content-center">
                     <div class="form-group w-25">
                         <label for="type">Tips:</label>
-                        <select class="form-control" name="type" id="type">
+                        <select class="form-control" name="type" id="type" data-name="type">
                             <option value="">Visi</option>
                             <option value="suns">Suņi</option>
                             <option value="kaķis">Kaķi</option>
@@ -34,7 +33,7 @@
                     </div>
                     <div class="form-group ms-3 w-25">
                         <label for="age">Vecums:</label>
-                        <select class="form-control" name="age" id="age">
+                        <select class="form-control" name="age" id="age" data-name="age">
                             <option value="">Visi</option>
                             <option value="<1">No 0 līdz 1</option>
                             <option value=">=1 AND age <=5">No 1 līdz 5 gadi</option>
@@ -43,7 +42,7 @@
                     </div>
                     <div class="form-group ms-3 w-25">
                         <label for="availability">Pieejamība:</label>
-                        <select class="form-control" name="availability" id="availability">
+                        <select class="form-control" name="availability" id="availability" data-name="availability">
                             <option value="">Visi</option>
                             <option value="available">Pieejami</option>
                             <option value="not_available">Nepieejami</option>
@@ -70,8 +69,8 @@
                             $query .= " AND available=0";
                         }
                     }
-                    $animals = $db->query($query)->results();
                     //Loop through the animals and display their information
+                    $animals = $db->query($query)->results();
                     foreach ($animals as $animal) {
                         ?>
                         <div class="col-lg-3 mb-4">
@@ -98,6 +97,7 @@
     </div>
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
+    <script src="resources/js/script.js"></script>
 </body>
 
 </html>
