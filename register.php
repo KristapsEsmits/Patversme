@@ -166,8 +166,8 @@ if (Input::exists()) {
             </div>
         </div>
     </div>
-    <script src="resources/bootstrap.bundle.min.js"></script>
-    <script src="resources/script.js"></script>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
+    <script src="resources/js/script.js"></script>
 </body>
 
 </html>

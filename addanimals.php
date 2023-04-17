@@ -156,7 +156,7 @@ if (Input::exists()) {
             </div>
         </div>
     </div>
-    <script src="resources/js.js"></script>
+    <script src="resources/js/script.js"></script>
 </body>
 
 </html>

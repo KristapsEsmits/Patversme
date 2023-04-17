@@ -32,7 +32,7 @@ if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
         <button onclick="window.location.href='users.php'">Apskatīt lietotājus</button>
     </section>
     <?php include 'includes/footer.php' ?>
-    <script src="resources/bootstrap.bundle.min.js"></script>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
