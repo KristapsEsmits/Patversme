@@ -1,8 +1,21 @@
 <?php
 include 'includes/logedin.php';
 require_once 'core/init.php';
-?>
 
+// database connection parameters
+$host = '127.0.0.1';
+$username = 'root';
+$password = '';
+$database = 'patversme';
+
+// create database connection
+$con = mysqli_connect($host, $username, $password, $database);
+
+// check connection
+if (mysqli_connect_errno()) {
+    die('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,21 +58,43 @@ require_once 'core/init.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" />
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </th>
-                            <td>1392</td>
-                            <td>James Yates</td>
-                            <td>Web Designer</td>
-                            <td>+63 983 0962 971</td>
-                            <td>NY University</td>
-                            <td>NY University</td>
-                            <td>NY University</td>
-                        </tr>
+                        <?php
+                        $query = "SELECT * FROM users";
+                        $result = mysqli_query($con, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <label class="control control--checkbox">
+                                        <input type="checkbox" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </th>
+                                <td>
+                                    <?php echo $row['id']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['username']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['name']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['surname']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['email']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['phone']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['group']; ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
