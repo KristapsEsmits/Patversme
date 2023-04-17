@@ -32,6 +32,9 @@ if (Input::exists()) {
                 ),
                 'chip' => array(),
                 'chipNumber' => array(),
+                'description' => array(
+                    'required' => true
+                ),
             )
         );
 
@@ -65,6 +68,7 @@ if (Input::exists()) {
                         'picture' => $picture,
                         'chip' => $chip,
                         'chipNumber' => Input::get('chipNumber'),
+                        'description' => Input::get('description'),
                     )
                 );
 
@@ -133,6 +137,12 @@ if (Input::exists()) {
                         <input type="file" name="picture" id="picture" placeholder="Bilde"
                             accept="image/png, image/gif, image/jpeg" required>
                         <i class="uil uil-images  icon"></i>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" name="description" id="description" autocomplete="off" placeholder="Apraksts"
+                            required>
+                        <i class="uil uil-font icon"></i>
                     </div>
 
                     <div class="field">

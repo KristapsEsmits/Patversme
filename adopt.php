@@ -20,10 +20,10 @@
 
     <div class="container my-4 p-3">
         <div>
-            <div class="col-12 col-md-2">
-                <h4>Filtrs:</h4>
-                <form action="" method="get">
-                    <div class="form-group">
+            <h4>Filtrs:</h4>
+            <form action="" method="get" class="d-flex flex-column align-items-center">
+                <div class="form-group d-flex flex-row w-100 justify-content-center">
+                    <div class="form-group w-25">
                         <label for="type">Tips:</label>
                         <select class="form-control" name="type" id="type">
                             <option value="">Visi</option>
@@ -32,7 +32,7 @@
                             <option value="cits">Citi dzīvnieki</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ms-3 w-25">
                         <label for="age">Vecums:</label>
                         <select class="form-control" name="age" id="age">
                             <option value="">Visi</option>
@@ -41,7 +41,7 @@
                             <option value=">5">Vairāk nekā 5 gadi</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ms-3 w-25">
                         <label for="availability">Pieejamība:</label>
                         <select class="form-control" name="availability" id="availability">
                             <option value="">Visi</option>
@@ -49,10 +49,10 @@
                             <option value="not_available">Nepieejami</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Filtrēt</button>
-                </form>
-            </div>
-            <div class="col-12 col-md-10">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 mb-3 ms-3">Filtrēt</button>
+            </form>
+            <div class="col-12 col-md-10 mx-auto">
                 <div class="row">
                     <?php
                     $db = DB::getInstance();
@@ -74,12 +74,12 @@
                     //Loop through the animals and display their information
                     foreach ($animals as $animal) {
                         ?>
-                        <div class="col-10 col-md-10 col-lg-2">
-                            <div class="card text-light text-center bg-white pb-2">
+                        <div class="col-lg-3 mb-4">
+                            <div class="card text-light text-center mx-auto">
                                 <div class="card-body text-dark">
                                     <div class="img-area mb-4">
                                         <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>"
-                                            width="250" height="150">
+                                            width="220" height="150" style="object-fit: cover; width: 100%;">
                                     </div>
                                     <h3 class="card-title">
                                         <?php echo $animal->name; ?>

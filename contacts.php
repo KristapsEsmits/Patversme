@@ -17,8 +17,8 @@
 
 <body>
     <?php include 'includes/nav.php'; ?>
-    <script src="resources/js/bootstrap.bundle.min.js"></script>
     <?php include 'includes/footer.php' ?>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
