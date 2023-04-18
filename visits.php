@@ -17,13 +17,6 @@ if (isset($_POST['delete-btn'])) {
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, "i", $visitID);
     mysqli_stmt_execute($stmt);
-
-    if (mysqli_stmt_affected_rows($stmt) > 0) {
-        // Display a confirmation message
-        echo "Record deleted successfully";
-    } else {
-        echo "Error deleting record: " . mysqli_error($con);
-    }
 }
 ?>
 
