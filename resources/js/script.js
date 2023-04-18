@@ -63,3 +63,13 @@ document.querySelectorAll('[data-name]').forEach(function(select) {
         localStorage.setItem(select.dataset.name, select.value);
     });
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+function showForm() {
+    var form = document.getElementById("form");
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+}

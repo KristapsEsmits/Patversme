@@ -1,6 +1,50 @@
 <?php
 include 'includes/logedin.php';
 require_once 'core/init.php';
+
+#Retrieve the animalID parameter from the URL
+$animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
+
+#Retrieve the userID parameter
+$user = new User();
+$userID = $user->data()->id;
+var_dump($userID);
+
+
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+        $validate = new Validate();
+        $validation = $validate->check(
+            $_POST,
+            array(
+                'date' => array(
+                    'required' => true,
+                ),
+                'id' => array(
+                ),
+                'animalID' => array(
+                    'required' => true,
+                )
+            )
+        );
+
+        if ($validation->passed()) {
+            $visit = new Visit;
+            try {
+                $visit->create(
+                    array(
+                        'date' => Input::get('date'),
+                        'id' => $userID,
+                        'animalID' => $animalID
+                    )
+                );
+                Redirect::to('index.php');
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,56 +63,62 @@ require_once 'core/init.php';
 
 <body>
     <?php include 'includes/nav.php';
-    // Retrieve the animalID parameter from the URL
-    $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
 
-    if (!$animalID) {
+    // Get the animal details from the database using the animalID
+    $db = DB::getInstance();
+    $animal = $db->query("SELECT * FROM animals WHERE animalID = ?", array($animalID))->results()[0];
+
+    if (!$animal) {
         echo "Animal not found.";
+        Redirect::to('adopt.php');
     } else {
-        // Get the animal details from the database using the animalID
-        $db = DB::getInstance();
-        $animal = $db->query("SELECT * FROM animals WHERE animalID = ?", array($animalID))->results()[0];
-
-        if (!$animal) {
-            echo "Animal not found.";
-        } else {
-            ?>
-            <div class="navmargin">
-                <div class="col-lg-3 m-auto">
-                    <div class="card text-light">
-                        <div class="card-body text-dark">
-                            <h3 class="card-title">
-                                <?php echo $animal->name; ?>
-                            </h3>
-                            <div class="img-area mb-4">
-                                <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="300"
-                                    style="object-fit: cover; width: 100%;">
-                            </div>
-                            <p><strong>Vecums:</strong>
-                                <?php echo $animal->age; ?>
-                            </p>
-                            <p><strong>Kāds dzīvnieks šis ir:</strong>
-                                <?php echo $animal->type; ?>
-                            </p>
-                            <p><strong>Vai ir čipēts:</strong>
-                                <?php echo $animal->chip; ?>
-                            </p>
-                            <p><strong>Čipa numurs:</strong>
-                                <?php echo $animal->chipNumber; ?>
-                            </p>
-                            <p><strong>Apraksts:</strong>
-                                <?php echo $animal->description; ?>
-                            </p>
-                            <button class="btn bg-warning text-dark"
-                                onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
+        ?>
+        <div class="navmargin">
+            <div class="col-lg-3 m-auto pb-5 pt-4">
+                <div class="card text-light">
+                    <div class="card-body text-dark">
+                        <h3 class="card-title">
+                            <?php echo $animal->name; ?>
+                        </h3>
+                        <div class="img-area mb-4">
+                            <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="300"
+                                style="object-fit: cover; width: 100%;">
                         </div>
+                        <p><strong>Vecums:</strong>
+                            <?php echo $animal->age; ?>
+                        </p>
+                        <p><strong>Kāds dzīvnieks šis ir:</strong>
+                            <?php echo $animal->type; ?>
+                        </p>
+                        <p><strong>Vai ir čipēts:</strong>
+                            <?php echo ($animal->chip == 0) ? 'Nē' : $animal->chip; ?>
+                        </p>
+                        <p><strong>Čipa numurs:</strong>
+                            <?php echo ($animal->chipNumber == 0) ? '-' : $animal->chipNumber; ?>
+                        </p>
+                        <p><strong>Apraksts:</strong>
+                            <?php echo $animal->description; ?>
+                        </p>
+                        <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+
                     </div>
                 </div>
             </div>
-            <?php
-        }
+            <form id="form" style="display: none;" action="" method="post">
+                <input type="hidden" name="animalID" value="<?php echo escape($animal->animalID); ?>">
+                <label for="date">Izvēlieties datumu:</label>
+                <input type="date" id="date" name="date" required>
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                <div class="field button">
+                    <input type="submit" value="Pieteikt vizīti">
+                </div>
+            </form>
+        </div>
+        <?php
     }
     ?>
+    <?php include 'includes/footer.php' ?>
+    <script src="resources/js/script.js"></script>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>
 
