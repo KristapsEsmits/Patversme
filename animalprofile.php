@@ -1,5 +1,4 @@
 <?php
-include 'includes/logedin.php';
 require_once 'core/init.php';
 
 #Retrieve the animalID parameter from the URL

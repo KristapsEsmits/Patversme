@@ -1,3 +1,5 @@
+<?php require_once 'core/init.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +18,6 @@
 
 <body>
     <?php
-    require_once 'core/init.php';
     include 'includes/nav.php';
 
     $user = new User();
