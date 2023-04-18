@@ -1,6 +1,12 @@
 <?php
 include 'includes/logedin.php';
 
+$user = new User();
+
+if (!$user->isLoggedIn()) {
+    Redirect::to('index.php');
+}
+
 // database connection parameters
 $host = '127.0.0.1';
 $username = 'root';
@@ -13,6 +19,23 @@ $con = mysqli_connect($host, $username, $password, $database);
 // check connection
 if (mysqli_connect_errno()) {
     die('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+
+if (isset($_POST['delete-btn'])) {
+    // Get the ID of the row to be deleted
+    $visitID = $_POST['delete-btn'];
+    // Delete the row from the database
+    $sql = "DELETE FROM visit WHERE visitID = ?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $visitID);
+    mysqli_stmt_execute($stmt);
+
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        // Display a confirmation message
+        echo "Record deleted successfully";
+    } else {
+        echo "Error deleting record: " . mysqli_error($con);
+    }
 }
 ?>
 
@@ -43,17 +66,25 @@ if (mysqli_connect_errno()) {
                     <thead>
                         <tr>
                             <th scope="col">Datums</th>
+                            <th scope="col">Opcijas</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id;
+                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
                         $result = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($result)) {
                             ?>
                             <tr>
                                 <td>
                                     <?php echo $row['date']; ?>
+                                </td>
+                                <td>
+                                    <form method="POST">
+                                        <button type="submit" name="delete-btn"
+                                            value="<?php echo $row['visitID']; ?>">Ateikt
+                                            vizīti</button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php
@@ -70,7 +101,7 @@ if (mysqli_connect_errno()) {
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id;
+                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
                         $result = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($result)) {
                             ?>
