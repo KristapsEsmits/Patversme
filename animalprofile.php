@@ -8,8 +8,6 @@ $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
 #Retrieve the userID parameter
 $user = new User();
 $userID = $user->data()->id;
-var_dump($userID);
-
 
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
@@ -38,7 +36,7 @@ if (Input::exists()) {
                         'animalID' => $animalID
                     )
                 );
-                Redirect::to('index.php');
+                Redirect::to('visits.php');
             } catch (Exception $e) {
                 die($e->getMessage());
             }
@@ -69,7 +67,6 @@ if (Input::exists()) {
     $animal = $db->query("SELECT * FROM animals WHERE animalID = ?", array($animalID))->results()[0];
 
     if (!$animal) {
-        echo "Animal not found.";
         Redirect::to('adopt.php');
     } else {
         ?>
@@ -99,7 +96,10 @@ if (Input::exists()) {
                         <p><strong>Apraksts:</strong>
                             <?php echo $animal->description; ?>
                         </p>
-                        <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                        <?php if ($user->isLoggedIn()) {
+                            ?>
+                            <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                        <?php } ?>
 
                     </div>
                 </div>

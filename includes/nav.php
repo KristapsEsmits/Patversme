@@ -19,22 +19,22 @@
                 <?php
                 $user = new User();
                 if ($user->isLoggedIn()) {
+                    echo '<li><a class="nav-link" href="visits.php">Vizītes</a></li>';
+                }
+                if ($user->isLoggedIn()) {
                     ?>
                     <li><a class="nav-link"
                             href="profile.php?user=<?php echo escape($user->data()->username); ?>">Profils</a></li>
                     <?php
                 }
-                ?>
-                <?php
                 if ($user->hasPermission('admin')) {
                     echo '<li><a class="nav-link" href="admin.php">Admin panelis</a></li>';
                 }
-                $user = new User();
                 if ($user->isLoggedIn()) {
                     echo '<li><a class="nav-link" href="logout.php">Iziet</a></li>';
                 } else {
                     echo '<li><a class="nav-link" href="login.php">Ienākt</a></li>
-                              <li><a class="nav-link" href="register.php">Reģistrēties</a></li>';
+                            <li><a class="nav-link" href="register.php">Reģistrēties</a></li>';
                 }
                 ?>
             </ul>
