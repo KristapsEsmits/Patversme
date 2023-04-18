@@ -71,8 +71,6 @@ if (Input::exists()) {
                         'description' => Input::get('description'),
                     )
                 );
-
-                Session::flash('admin.php', 'Dzīvnieks pievienots!');
                 Redirect::to('admin.php');
             } catch (Exception $e) {
                 die($e->getMessage());

@@ -33,26 +33,37 @@ require_once 'core/init.php';
             echo "Animal not found.";
         } else {
             ?>
-            <div class="animal">
-                <h3>
-                    <?php echo $animal->name; ?>
-                </h3>
-                <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="128" height="128">
-                <p>Vecums:
-                    <?php echo $animal->age; ?>
-                </p>
-                <p>Kāds dzīvnieks šis ir:
-                    <?php echo $animal->type; ?>
-                </p>
-                <p>Vai ir čipēts:
-                    <?php echo $animal->chip; ?>
-                </p>
-                <p>Čipa numurs:
-                    <?php echo $animal->chipNumber; ?>
-                </p>
-                <p>Apraksts:
-                    <?php echo $animal->description; ?>
-                </p>
+            <div class="navmargin">
+                <div class="col-lg-3 m-auto">
+                    <div class="card text-light">
+                        <div class="card-body text-dark">
+                            <h3 class="card-title">
+                                <?php echo $animal->name; ?>
+                            </h3>
+                            <div class="img-area mb-4">
+                                <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>" width="300"
+                                    style="object-fit: cover; width: 100%;">
+                            </div>
+                            <p><strong>Vecums:</strong>
+                                <?php echo $animal->age; ?>
+                            </p>
+                            <p><strong>Kāds dzīvnieks šis ir:</strong>
+                                <?php echo $animal->type; ?>
+                            </p>
+                            <p><strong>Vai ir čipēts:</strong>
+                                <?php echo $animal->chip; ?>
+                            </p>
+                            <p><strong>Čipa numurs:</strong>
+                                <?php echo $animal->chipNumber; ?>
+                            </p>
+                            <p><strong>Apraksts:</strong>
+                                <?php echo $animal->description; ?>
+                            </p>
+                            <button class="btn bg-warning text-dark"
+                                onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <?php
         }
