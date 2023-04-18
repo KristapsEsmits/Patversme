@@ -63,8 +63,7 @@ if (isset($_POST['delete-btn'])) {
                                 <td>
                                     <form method="POST">
                                         <button type="submit" name="delete-btn"
-                                            value="<?php echo $row['visitID']; ?>">Ateikt
-                                            vizīti</button>
+                                            value="<?php echo $row['visitID']; ?>">Ateikt vizīti</button>
                                     </form>
                                 </td>
                             </tr>

@@ -1,5 +1,6 @@
 <?php
 require_once 'core/init.php';
+include 'includes/databaseCon.php';
 
 #Retrieve the animalID parameter from the URL
 $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
@@ -54,9 +55,8 @@ if (Input::exists()) {
     <title>Jaunās Mājas: Dzīvnieks</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="resources/css/style.css">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
     <?php include 'includes/nav.php';
@@ -96,9 +96,15 @@ if (Input::exists()) {
                             <?php echo $animal->description; ?>
                         </p>
                         <?php if ($user->isLoggedIn()) {
-                            ?>
-                            <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
-                        <?php } ?>
+                            // check if the user has upcoming visits
+                            $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
+                            $result = mysqli_query($con, $query);
+                            if (mysqli_num_rows($result) == 0) {
+                                // show the button only if the user has no upcoming visits
+                                ?>
+                                <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                            <?php }
+                        } ?>
 
                     </div>
                 </div>
