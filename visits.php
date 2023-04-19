@@ -46,6 +46,7 @@ if (isset($_POST['delete-btn'])) {
                     <thead>
                         <tr>
                             <th scope="col">Datums</th>
+                            <th scope="col">Dzīvnieks</th>
                             <th scope="col">Opcijas</th>
                         </tr>
                     </thead>
@@ -58,6 +59,10 @@ if (isset($_POST['delete-btn'])) {
                             <tr>
                                 <td>
                                     <?php echo $row['date']; ?>
+                                </td>
+                                <td>
+                                    <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
+
                                 </td>
                                 <td>
                                     <form method="POST">
@@ -76,6 +81,7 @@ if (isset($_POST['delete-btn'])) {
                     <thead>
                         <tr>
                             <th scope="col">Datums</th>
+                            <th scope="col">Dzīvnieks</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,6 +93,10 @@ if (isset($_POST['delete-btn'])) {
                             <tr>
                                 <td>
                                     <?php echo $row['date']; ?>
+                                </td>
+                                <td>
+                                    <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
+
                                 </td>
                             </tr>
                             <?php

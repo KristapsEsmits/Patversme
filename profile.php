@@ -1,4 +1,13 @@
-<?php require_once 'core/init.php'; ?>
+<?php
+require_once 'core/init.php';
+
+$user = new User();
+if ($user->isLoggedIn()) {
+} else {
+    Redirect::to('index.php');
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +27,6 @@
 <body>
     <?php
     include 'includes/nav.php';
-
-    $user = new User();
 
     if ($username = Input::get('user')) {
         $profileUser = new User($username);

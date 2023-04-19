@@ -5,6 +5,7 @@ include 'includes/databaseCon.php';
 #Retrieve the animalID parameter from the URL
 $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
 $user = new User();
+$animals = new Animal();
 
 #Retrieve the userID parameter
 
@@ -40,10 +41,21 @@ if (Input::exists()) {
                         'animalID' => $animalID
                     )
                 );
-                Redirect::to('visits.php');
             } catch (Exception $e) {
                 die($e->getMessage());
             }
+        }
+
+        try {
+            $animals->updateAnimal(
+                $animalID,
+                array(
+                    'available' => 0
+                )
+            );
+            Redirect::to('visits.php');
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 }
@@ -100,11 +112,11 @@ if (Input::exists()) {
                             <?php echo $animal->description; ?>
                         </p>
                         <?php if ($user->isLoggedIn()) {
-                            // check if the user has upcoming visits
+                            //Check if the user has upcoming visits
                             $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
                             $result = mysqli_query($con, $query);
                             if (mysqli_num_rows($result) == 0) {
-                                // show the button only if the user has no upcoming visits
+                                //Show the button only if the user has no upcoming visits
                                 ?>
                                 <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
                             <?php }

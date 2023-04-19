@@ -22,4 +22,12 @@ class Animal
             throw new Exception('There was a problem creating an account.');
         }
     }
+
+    public function updateAnimal($animalID, $fields = array())
+    {
+        if (!$this->_db->update('animals', $animalID, $fields)) {
+            throw new Exception('Kļūda! Nav izdevies atjaunot dzīvnieka datus.');
+        }
+    }
+
 }

@@ -52,7 +52,6 @@ if (Input::exists()) {
                     )
                 );
 
-                Session::flash('home', 'Profile details have been updated!');
                 Redirect::to('index.php');
             } catch (Exception $e) {
                 die($e->getMessage());
