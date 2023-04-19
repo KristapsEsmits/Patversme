@@ -29,6 +29,7 @@ if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
         <button onclick="window.location.href='addanimals.php'">Pievienot dzīvnieku</button>
         <button onclick="window.location.href='animalslist.php'">Apskatīt dzīvniekums</button>
         <button onclick="window.location.href='users.php'">Apskatīt lietotājus</button>
+        <button onclick="window.location.href='allVisits.php'">Apskatīt vizītes</button>
     </section>
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
