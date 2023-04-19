@@ -4,10 +4,14 @@ include 'includes/databaseCon.php';
 
 #Retrieve the animalID parameter from the URL
 $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
+$user = new User();
 
 #Retrieve the userID parameter
-$user = new User();
-$userID = $user->data()->id;
+
+if ($user->isLoggedIn()) {
+    $user = new User();
+    $userID = $user->data()->id;
+}
 
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
