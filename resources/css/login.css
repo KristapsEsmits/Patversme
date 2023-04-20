@@ -28,6 +28,14 @@ body{
     margin-top: 40px;
 }
 
+.valid{
+    position: absolute;
+    margin-right: 30%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+    margin-top: 5%;
+  }
+
 .cot .forms{
     display: flex;
     align-items: center;

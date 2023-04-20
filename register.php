@@ -54,7 +54,7 @@ if (Input::exists()) {
         );
 
         if ($validation->passed()) {
-            #Gives access to database
+            //Gives access to database
             $user = new User();
 
             $salt = Hash::salt(32);
@@ -78,10 +78,15 @@ if (Input::exists()) {
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-        } else {
-            foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
-            }
+        } else { ?>
+            <div class="valid">
+                <?php
+                foreach ($validation->errors() as $error) {
+                    echo $error, '<br>';
+                }
+                ?>
+            </div>
+            <?php
         }
     }
 }
