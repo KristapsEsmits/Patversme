@@ -2,12 +2,12 @@
 require_once 'core/init.php';
 include 'includes/databaseCon.php';
 
-#Retrieve the animalID parameter from the URL
+//Retrieve the animalID parameter from the URL
 $animalID = isset($_GET['animalID']) ? $_GET['animalID'] : null;
 $user = new User();
 $animals = new Animal();
 
-#Retrieve the userID parameter
+//Retrieve the userID parameter
 
 if ($user->isLoggedIn()) {
     $user = new User();
@@ -77,7 +77,7 @@ if (Input::exists()) {
 <body>
     <?php include 'includes/nav.php';
 
-    // Get the animal details from the database using the animalID
+    //Get the animal details from the database using the animalID
     $db = DB::getInstance();
     $animal = $db->query("SELECT * FROM animals WHERE animalID = ?", array($animalID))->results()[0];
 

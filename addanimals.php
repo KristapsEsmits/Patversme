@@ -39,11 +39,11 @@ if (Input::exists()) {
         );
 
         if ($validation->passed()) {
-            #Gives access to database
+            //Gives access to database
             $animals = new Animal();
             $chip = Input::get('chip') ? true : false;
 
-            // process file upload
+            //process file upload
             $picture = '';
             if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
                 $target_dir = "uploads/";
@@ -164,6 +164,7 @@ if (Input::exists()) {
         </div>
     </div>
     <script src="resources/js/script.js"></script>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

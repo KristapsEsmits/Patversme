@@ -10,9 +10,9 @@ if (!$user->isLoggedIn()) {
 include 'includes/databaseCon.php';
 
 if (isset($_POST['delete-btn'])) {
-    // Get the ID of the row to be deleted
+    //Get the ID of the row to be deleted
     $visitID = $_POST['delete-btn'];
-    // Delete the row from the database
+    //Delete the row from the database
     $sql = "DELETE FROM visit WHERE visitID = ?";
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, "i", $visitID);

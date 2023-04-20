@@ -18,7 +18,7 @@ class Validate
                 if (isset($source[$item])) {
                     $value = $source[$item];
                 } else {
-                    $value = null; // or some default value
+                    $value = null; //or some default value
                 }
 
                 if ($rule === 'required' && empty($value)) {

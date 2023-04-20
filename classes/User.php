@@ -21,7 +21,7 @@ class User
                 if ($this->find($user)) {
                     $this->_isLoggedIn = true;
                 } else {
-                    //logiout
+                    //logout
                 }
             }
         } else {
@@ -30,7 +30,7 @@ class User
 
     }
 
-    #Methon that will register users
+    //Methon that will register users
     public function create($fields = array())
     {
         if ($this->_db->insert('users', $fields)) {
@@ -66,13 +66,13 @@ class User
                 if ($this->data()->password === Hash::make($password, $salt)) {
                     Session::put($this->_sessionName, $this->data()->id);
 
-                    #If remember me checked
+                    //If remember me checked
                     if ($remember) {
                         $hash = Hash::unique();
-                        #Check in db is user id exists in table
+                        //Check in db is user id exists in table
                         $hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
 
-                        #If it doesnt exist - inset a hash in db (only one record pre user)
+                        //If it doesnt exist - inset a hash in db (only one record pre user)
                         if (!$hashCheck->count()) {
                             $this->_db->insert(
                                 'users_session',
