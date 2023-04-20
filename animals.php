@@ -1,6 +1,7 @@
 <?php
 require_once 'core/init.php';
 
+$animals = new Animal();
 $user = new User();
 
 if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
@@ -17,7 +18,7 @@ include 'includes/databaseCon.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaunās Mājas: Lietotāji</title>
+    <title>Jaunās Mājas: Dzīvnieki</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/style.css">
@@ -29,7 +30,7 @@ include 'includes/databaseCon.php';
     <?php include 'includes/nav.php'; ?>
     <div class="content">
         <div class="container">
-            <h2 class="mb-5">Lietotāji</h2>
+            <h2 class="mb-5">Dzīvnieki</h2>
             <table class="table custom-table">
                 <thead>
                     <tr>
@@ -40,17 +41,19 @@ include 'includes/databaseCon.php';
                             </label>
                         </th>
                         <th scope="col">ID</th>
-                        <th scope="col">Lietoājvārds</th>
                         <th scope="col">Vārds</th>
-                        <th scope="col">Uzvārds</th>
-                        <th scope="col">E-pasts</th>
-                        <th scope="col">Tel-nr</th>
-                        <th scope="col">Grupa</th>
+                        <th scope="col">Vecums</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Bilde</th>
+                        <th scope="col">Čips</th>
+                        <th scope="col">Čipa nr</th>
+                        <th scope="col">Apraksts</th>
+                        <th scope="col">Ieplānota vizīte</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $query = "SELECT * FROM users";
+                    $query = "SELECT * FROM animals";
                     $result = mysqli_query($con, $query);
                     while ($row = mysqli_fetch_array($result)) {
                         ?>
@@ -62,25 +65,31 @@ include 'includes/databaseCon.php';
                                 </label>
                             </th>
                             <td>
-                                <?php echo $row['id']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['username']; ?>
+                                <?php echo $row['animalID']; ?>
                             </td>
                             <td>
                                 <?php echo $row['name']; ?>
                             </td>
                             <td>
-                                <?php echo $row['surname']; ?>
+                                <?php echo $row['age']; ?>
                             </td>
                             <td>
-                                <?php echo $row['email']; ?>
+                                <?php echo $row['type']; ?>
                             </td>
                             <td>
-                                <?php echo $row['phone']; ?>
+                                <a href="<?php echo $row['picture']; ?>">Apskatīt</a>
                             </td>
                             <td>
-                                <?php echo $row['group']; ?>
+                                <?php echo ($row['chip'] == 0) ? 'Nē' : $row['chip']; ?>
+                            </td>
+                            <td>
+                                <?php echo ($row['chipNumber'] == 0) ? '-' : $row['chipNumber']; ?>
+                            </td>
+                            <td class="description-cell">
+                                <?php echo $row['description']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['available'] == 1 ? 'Nē' : ($row['available'] == 0 ? 'Jā' : $row['available']) ?>
                             </td>
                         </tr>
                         <?php

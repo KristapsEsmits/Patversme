@@ -177,6 +177,20 @@ span{
 	margin-right: 15px;
 }
 
+.description-cell {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description-cell:hover {
+    max-width: 200px;
+    white-space: normal;
+    overflow: visible;
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.carousel-caption {
 		bottom: 370px;

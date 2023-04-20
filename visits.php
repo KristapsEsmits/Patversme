@@ -27,7 +27,7 @@ if (isset($_POST['delete-btn'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaunās Mājas: Kontakti</title>
+    <title>Jaunās Mājas: Vizītes</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/style.css">
@@ -62,12 +62,11 @@ if (isset($_POST['delete-btn'])) {
                                 </td>
                                 <td>
                                     <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
-
                                 </td>
                                 <td>
                                     <form method="POST">
                                         <button type="submit" name="delete-btn"
-                                            value="<?php echo $row['visitID']; ?>">Ateikt vizīti</button>
+                                            value="<?php echo $row['visitID']; ?>">Atteikt vizīti</button>
                                     </form>
                                 </td>
                             </tr>

@@ -17,7 +17,7 @@ include 'includes/databaseCon.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaunās Mājas: Kontakti</title>
+    <title>Jaunās Mājas: Vizītes</title>
     <link rel="icon" href="resources/img/fav.png" />
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/style.css">
