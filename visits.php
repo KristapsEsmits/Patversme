@@ -18,6 +18,14 @@ if (isset($_POST['delete-btn'])) {
     mysqli_stmt_bind_param($stmt, "i", $visitID);
     mysqli_stmt_execute($stmt);
 }
+
+
+$query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
+$result1 = mysqli_query($con, $query);
+$query2 = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
+$result2 = mysqli_query($con, $query2);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,67 +50,85 @@ if (isset($_POST['delete-btn'])) {
         <div class="content">
             <div class="container">
                 <h2>Plānotās vizītes:</h2>
-                <table class="table custom-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Datums</th>
-                            <th scope="col">Dzīvnieks</th>
-                            <th scope="col">Opcijas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <?php echo $row['date']; ?>
-                                </td>
-                                <td>
-                                    <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
-                                </td>
-                                <td>
-                                    <form method="POST">
-                                        <button type="submit" name="delete-btn"
-                                            value="<?php echo $row['visitID']; ?>">Atteikt vizīti</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-                <h2>Pagājušās vizītes:</h2>
-                <table class="table custom-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Datums</th>
-                            <th scope="col">Dzīvnieks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <?php echo $row['date']; ?>
-                                </td>
-                                <td>
-                                    <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
+                <?php if (mysqli_num_rows($result1) == 0) {
+                    ?>
+                    <div class="container text-center">
+                        <h2 class="mb-4 mt-4">Nav ieplānota neviena vizīte!</h2>
+                    </div>
 
-                                </td>
+                    <?php
+                } else { ?>
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Datums</th>
+                                <th scope="col">Dzīvnieks</th>
+                                <th scope="col">Opcijas</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $row['date']; ?>
+                                    </td>
+                                    <td>
+                                        <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
+                                    </td>
+                                    <td>
+                                        <form method="POST">
+                                            <button type="submit" name="delete-btn"
+                                                value="<?php echo $row['visitID']; ?>">Atteikt vizīti</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                <?php } ?>
+                <h2>Pagājušās vizītes:</h2>
+                <?php
+                if (mysqli_num_rows($result2) == 0) {
+                    ?>
+                    <div class="container text-center">
+                        <h2 class="mb-4 mt-4">Neesat veicis nevienu vizīti!</h2>
+                    </div>
+                    <?php
+                } else { ?>
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Datums</th>
+                                <th scope="col">Dzīvnieks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $row['date']; ?>
+                                    </td>
+                                    <td>
+                                        <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
+
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                <?php } ?>
             </div>
         </div>
     </div>
