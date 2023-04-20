@@ -1,11 +1,38 @@
 <?php
 require_once 'core/init.php';
+include 'includes/databaseCon.php';
 
 $user = new User();
 
 if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
     Redirect::to('index.php');
 }
+
+$sql_animals = "SELECT COUNT(*) as total_animals FROM animals";
+$sql_users = "SELECT COUNT(*) as total_users FROM users";
+$sql_visits = "SELECT COUNT(*) as total_visits FROM visit";
+$sql_planed_visits = "SELECT COUNT(*) as planed_visits FROM visit WHERE date >= CURDATE()";
+$sql_past_visits = "SELECT COUNT(*) as past_visits FROM visit WHERE date < CURDATE()";
+
+//Execute the queries
+$result_animals = mysqli_query($con, $sql_animals);
+$result_users = mysqli_query($con, $sql_users);
+$result_visits = mysqli_query($con, $sql_visits);
+$result_planed_visits = mysqli_query($con, $sql_planed_visits);
+$result_past_visits = mysqli_query($con, $sql_past_visits);
+
+//Fetch the results
+$row_animals = mysqli_fetch_assoc($result_animals);
+$row_users = mysqli_fetch_assoc($result_users);
+$row_visits = mysqli_fetch_assoc($result_visits);
+$row_planed_visits = mysqli_fetch_assoc($result_planed_visits);
+$row_past_visits = mysqli_fetch_assoc($result_past_visits);
+
+$animals = $row_animals["total_animals"];
+$users = $row_users["total_users"];
+$visits = $row_visits["total_visits"];
+$planed_visits = $row_planed_visits["planed_visits"];
+$past_visits = $row_past_visits["past_visits"];
 
 ?>
 
@@ -30,6 +57,13 @@ if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
         <button onclick="window.location.href='animals.php'">Apskatīt dzīvniekums</button>
         <button onclick="window.location.href='users.php'">Apskatīt lietotājus</button>
         <button onclick="window.location.href='allVisits.php'">Apskatīt vizītes</button>
+        <?php
+        echo "Patversmē kopā ir: " . $animals . " dzīvnieki";
+        echo "Sistemā ir: " . $users . " reģistrēti lietotāji";
+        echo "Patversmē kopā ir bijušas: " . $visits . " vizītes";
+        echo "Pašlaik ir ieplānotas: " . $planed_visits . " vizītes";
+        echo "Patversmē ir bijušas: " . $past_visits . " vizītes";
+        ?>
     </section>
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
