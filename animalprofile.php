@@ -112,15 +112,18 @@ if (Input::exists()) {
                         </p>
                         <?php if ($user->isLoggedIn() && empty($result) && $animal->available == 1) { ?>
                             <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
-                        <?php } ?>
-
+                        <?php } else { ?>
+                            <p><strong>Info: </strong>Pie dzīvnieka pašlaik nevar pieteikt vizīti</p>
+                            <?php
+                        } ?>
                     </div>
                 </div>
             </div>
             <form id="form" style="display: none;" action="" method="post">
                 <input type="hidden" name="animalID" value="<?php echo escape($animal->animalID); ?>">
                 <label for="date">Izvēlieties datumu:</label>
-                <input type="date" id="date" name="date" required>
+                <input type="date" id="date" name="date" required min="<?php echo date('Y-m-d'); ?>"
+                    max="<?php echo date('Y-m-d', strtotime('+5 days')); ?>">
                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                 <div class="field button">
                     <input type="submit" value="Pieteikt vizīti">

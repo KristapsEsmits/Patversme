@@ -33,12 +33,10 @@ if (isset($_POST['delete-btn'])) {
     }
 }
 
-
 $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
 $result1 = mysqli_query($con, $query);
 $query2 = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
 $result2 = mysqli_query($con, $query2);
-
 
 ?>
 
@@ -64,12 +62,10 @@ $result2 = mysqli_query($con, $query2);
         <div class="content">
             <div class="container">
                 <h2>Plānotās vizītes:</h2>
-                <?php if (mysqli_num_rows($result1) == 0) {
-                    ?>
+                <?php if (mysqli_num_rows($result1) == 0) { ?>
                     <div class="container text-center">
                         <h2 class="mb-4 mt-4">Nav ieplānota neviena vizīte!</h2>
                     </div>
-
                     <?php
                 } else { ?>
                     <table class="table custom-table">
@@ -84,8 +80,7 @@ $result2 = mysqli_query($con, $query2);
                             <?php
                             $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
                             $result = mysqli_query($con, $query);
-                            while ($row = mysqli_fetch_array($result)) {
-                                ?>
+                            while ($row = mysqli_fetch_array($result)) { ?>
                                 <tr>
                                     <td>
                                         <?php echo $row['date']; ?>
@@ -100,9 +95,7 @@ $result2 = mysqli_query($con, $query2);
                                         </form>
                                     </td>
                                 </tr>
-                                <?php
-                            }
-                            ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 <?php } ?>
@@ -126,20 +119,16 @@ $result2 = mysqli_query($con, $query2);
                             <?php
                             $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
                             $result = mysqli_query($con, $query);
-                            while ($row = mysqli_fetch_array($result)) {
-                                ?>
+                            while ($row = mysqli_fetch_array($result)) { ?>
                                 <tr>
                                     <td>
                                         <?php echo $row['date']; ?>
                                     </td>
                                     <td>
                                         <a href='animalprofile.php?animalID=<?php echo $row['animalID']; ?>'>Apskatīt</a>
-
                                     </td>
                                 </tr>
-                                <?php
-                            }
-                            ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 <?php } ?>
