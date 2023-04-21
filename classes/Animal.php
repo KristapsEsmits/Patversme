@@ -25,7 +25,7 @@ class Animal
 
     public function updateAnimal($animalID, $fields = array())
     {
-        if (!$this->_db->update('animals', $animalID, $fields)) {
+        if ($this->_db->update('animals', $animalID, $fields, 'animalID')) {
             throw new Exception('Kļūda! Nav izdevies atjaunot dzīvnieka datus.');
         }
     }

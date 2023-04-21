@@ -116,7 +116,7 @@ class DB
     }
 
     //Update function
-    public function update($table, $id, $fields)
+    public function update($table, $id, $fields, $primaryKeyColumn = 'id')
     {
         //Parametrs
         $set = '';
@@ -132,7 +132,7 @@ class DB
         }
 
         //Update (regular mqsql update but gets data from inputs)
-        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+        $sql = "UPDATE {$table} SET {$set} WHERE {$primaryKeyColumn} = {$id}";
 
         //Replceses ? with data and inserts it in database
         if ($this->query($sql, $fields)->error()) {

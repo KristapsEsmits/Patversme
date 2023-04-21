@@ -2,6 +2,8 @@
 require_once 'core/init.php';
 
 $user = new User();
+$visit = new Visit();
+$animals = new Animal();
 
 if (!$user->isLoggedIn()) {
     Redirect::to('index.php');
@@ -13,10 +15,22 @@ if (isset($_POST['delete-btn'])) {
     //Get the ID of the row to be deleted
     $visitID = $_POST['delete-btn'];
     //Delete the row from the database
-    $sql = "DELETE FROM visit WHERE visitID = ?";
+    $sql = "DELETE FROM visit WHERE visitID = ? AND date >= CURDATE()";
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, "i", $visitID);
     mysqli_stmt_execute($stmt);
+
+    try {
+        $animals->updateAnimal(
+            $animalID = 34,
+            array(
+                'available' => 1
+            )
+        );
+        Redirect::to('visits.php');
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
 }
 
 
