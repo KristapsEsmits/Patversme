@@ -80,7 +80,7 @@ include 'includes/databaseCon.php';
                                 <?php echo $row['phone']; ?>
                             </td>
                             <td>
-                                <?php echo $row['group']; ?>
+                                <?php echo $row['group'] == 1 ? 'Lietotājs' : ($row['group'] == 2 ? 'Admins' : $row['group']) ?>
                             </td>
                         </tr>
                         <?php
