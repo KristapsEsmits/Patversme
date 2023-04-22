@@ -89,7 +89,9 @@ include 'includes/databaseCon.php';
                                 <?php echo $row['description']; ?>
                             </td>
                             <td>
-                                <?php echo $row['available'] == 1 ? 'Nē' : ($row['available'] == 0 ? 'Jā' : $row['available']) ?>
+                                <?php
+                                echo $row['available'] == 1 ? 'Nē' : ($row['available'] == 0 ? 'Jā' : ($row['available'] == 3 ? 'Adoptēts' : $row['available']));
+                                ?>
                             </td>
                         </tr>
                         <?php

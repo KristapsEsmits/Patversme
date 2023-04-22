@@ -55,36 +55,34 @@ if (Input::exists()) {
 
 <body>
     <?php include 'includes/nav.php'; ?>
-    <section class="navmargin">
-        <div class="content">
             <div class="container">
-                <h2 class="mb-5">Adopt an Animal</h2>
+                <h2 class="mb-5">Dzīvnieka adopcija</h2>
                 <form method="post" action="">
                     <div class="form-group">
-                        <label for="userID">Select a user:</label>
+                        <label for="userID">Lietotājs:</label>
                         <select class="form-control" id="userID" name="userID">
                             <?php
                             $query = "SELECT * FROM users";
                             $result = mysqli_query($con, $query);
                             while ($row = mysqli_fetch_array($result)) {
                                 ?>
-                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?>     <?php echo $row['surname']; ?> (+371-<?php echo $row['phone']; ?>)</option>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="animalID">Select an animal:</label>
+                        <label for="animalID">Dzīvnieks:</label>
                         <select class="form-control" id="animalID" name="animalID">
                             <?php
                             $query = "SELECT * FROM animals";
                             $result = mysqli_query($con, $query);
                             while ($row = mysqli_fetch_array($result)) {
                                 ?>
-                                <option value="<?php echo $row['animalID']; ?>"><?php echo $row['name']; ?></option>
+                                <option value="<?php echo $row['animalID']; ?>"><?php echo $row['animalID']; ?>. <?php echo $row['name']; ?></option>
                             <?php } ?>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Adopt</button>
+                    <button type="submit" class="btn btn-primary">Veikt adopciju</button>
                 </form>
             </div>
         </div>

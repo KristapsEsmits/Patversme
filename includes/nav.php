@@ -28,7 +28,7 @@
                     <?php
                 }
                 if ($user->hasPermission('admin')) {
-                    echo '<li><a class="nav-link" href="admin.php">Admin panelis</a></li>';
+                    echo '<li><a class="nav-link" href="admin.php">Admin</a></li>';
                 }
                 if ($user->isLoggedIn()) {
                     echo '<li><a class="nav-link" href="logout.php">Iziet</a></li>';
