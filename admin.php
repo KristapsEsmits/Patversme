@@ -57,6 +57,7 @@ $past_visits = $row_past_visits["past_visits"];
         <button onclick="window.location.href='animals.php'">Apskatīt dzīvniekums</button>
         <button onclick="window.location.href='users.php'">Apskatīt lietotājus</button>
         <button onclick="window.location.href='allVisits.php'">Apskatīt vizītes</button>
+        <button onclick="window.location.href='final.php'">Dzīvnieka adopcija</button>
         <?php
         echo "Patversmē kopā ir: " . $animals . " dzīvnieki";
         echo "Sistemā ir: " . $users . " reģistrēti lietotāji";

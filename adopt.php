@@ -71,23 +71,25 @@
                     //Loop through the animals and display their information
                     $animals = $db->query($query)->results();
                     foreach ($animals as $animal) {
-                        ?>
-                        <div class="col-lg-3 mb-4">
-                            <div class="card text-light text-center mx-auto">
-                                <div class="card-body text-dark">
-                                    <div class="img-area mb-4">
-                                        <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>"
-                                            width="220" height="150" style="object-fit: cover; width: 100%;">
+                        if ($animal->available < 3) {
+                            ?>
+                            <div class="col-lg-3 mb-4">
+                                <div class="card text-light text-center mx-auto">
+                                    <div class="card-body text-dark">
+                                        <div class="img-area mb-4">
+                                            <img src="<?php echo $animal->picture; ?>" alt="<?php echo $animal->name; ?>"
+                                                width="220" height="150" style="object-fit: cover; width: 100%;">
+                                        </div>
+                                        <h3 class="card-title">
+                                            <?php echo $animal->name; ?>
+                                        </h3>
+                                        <button class="btn bg-warning text-dark"
+                                            onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
                                     </div>
-                                    <h3 class="card-title">
-                                        <?php echo $animal->name; ?>
-                                    </h3>
-                                    <button class="btn bg-warning text-dark"
-                                        onclick="window.location.href='animalprofile.php?animalID=<?php echo escape($animal->animalID); ?>'">Vairāk</button>
                                 </div>
                             </div>
-                        </div>
-                        <?php
+                            <?php
+                        }
                     }
                     ?>
                 </div>
