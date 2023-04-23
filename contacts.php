@@ -20,52 +20,50 @@
         <div class="container" data-aos="fade-up">
             <div class="row">
                 <h3 class="text-center">Sazinies ar mums</h3>
-                <p class="text-center mt-2">
+                <p class="text-center">
                     Dzīvnieku patversme "Jaunās mājas"
                 </p>
                 <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
-                        <div class="card-body text-dark">
-                            <div class="img-area mb-4">
-                                <i class="fa fa-phone fa-3x"></i>
+                    <div class="card-deck">
+                        <div class="card text-light text-center bg-white mb-3">
+                            <div class="mt-3 text-dark">
+                                <div class="img-area mb-3">
+                                    <i class="fa fa-phone fa-3x"></i>
+                                </div>
+                                <h3 class="card-title">Piezvani mums</h3>
+                                <p class="lead">+371 26617636 </p>
                             </div>
-                            <h3 class="card-title">Piezvani mums</h3>
-                            <p class="lead">+371 26617636 </p>
+                        </div>
+                        <div class="card text-light text-center bg-white mb-3">
+                            <div class="mt-3 text-dark">
+                                <div class="img-area mb-3">
+                                    <i class="fa fa-map fa-3x"></i>
+                                </div>
+                                <h3 class="card-title">Brauc ciemos</h3>
+                                <p class="lead">Mežapurva iela 2, Rīga</p>
+                            </div>
+                        </div>
+                        <div class="card text-light text-center bg-white">
+                            <div class="mt-3 text-dark">
+                                <div class="img-area mb-3">
+                                    <i class="fa fa-inbox fa-3x"></i>
+                                </div>
+                                <h3 class="card-title">Nosūti mums ziņu </h3>
+                                <p class="lead">info@patversme.lv</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
-                        <div class="card-body text-dark">
-                            <div class="img-area mb-4">
-                                <i class="fa fa-map fa-3x"></i>
-                            </div>
-                            <h3 class="card-title">Brauc ciemos</h3>
-                            <p class="lead">Mežapurva iela 2, Rīga</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-12 col-lg-4">
-                    <div class="card text-light text-center bg-white pb-2">
-                        <div class="card-body text-dark">
-                            <div class="img-area mb-4">
-                                <i class="fa fa-inbox fa-3x"></i>
-                            </div>
-                            <h3 class="card-title">Nosūti mums ziņu </h3>
-                            <p class="lead">info@patversme.lv</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 ">
+                <div class="col-12 col-md-12 col-lg-8">
                     <iframe loading="lazy"
                         src="https://maps.google.com/maps?q=Me%C5%BEapurva%20iela%202%2C%20R%C4%ABga%2C%20LV-1064&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near"
                         title="Mežapurva iela 2, Rīga, LV-1064" aria-label="Mežapurva iela 2, Rīga, LV-1064"
-                        style="height: 500px; width: 100%"></iframe>
+                        style="height: 540px; width: 100%"></iframe>
                 </div>
-
             </div>
         </div>
     </div>
+
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>

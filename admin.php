@@ -58,6 +58,7 @@ $adopted = $row_adopted["total_adopted"];
     <?php include 'includes/nav.php'; ?>
     <div class="container">
         <div class="navmargin mid">
+
             <div class="content">
                 <h2>Opcijas:</h2>
                 <div class=" d-flex justify-content-center">

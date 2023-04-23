@@ -138,6 +138,17 @@ span{
 	padding-top: 25px;
 }
 
+.carousel-inner:before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.3);
+	}
+
 .single-box p {
 	color: #000000;
 	line-height: 1.9;

@@ -19,8 +19,37 @@
     <div class="navmargin">
         <div class="container mt-5" data-aos="fade-up">
             <div class="row">
-                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <img src="resources/img/cat3.webp" class="img-fluid" alt="">
+                <div style="height: 400px" class="col-lg-6 order-1 order-lg-2" data-aos="fade-left"
+                    data-aos-delay="100">
+                    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+                                aria-current="true"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div style="height: 400px;" class="carousel-item active">
+                                <img class="cover" src="resources/img/dog.webp">
+                            </div>
+                            <div style="height: 400px;" class="carousel-item ">
+                                <img class="cover" src="resources/img/cat3.webp">
+                            </div>
+                            <div style="height: 400px;" class="carousel-item">
+                                <img class="cover" src="resources/img/dog2.webp">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
                     data-aos-delay="100">
