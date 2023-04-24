@@ -16,7 +16,7 @@
 
 <body>
     <?php include 'includes/nav.php' ?>
-    <!------------->
+
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
@@ -89,7 +89,6 @@
             </div>
         </div>
     </section>
-    <!------------->
     <section class="section-padding">
         <div class="container">
             <div class="row">
@@ -142,7 +141,6 @@
             </div>
         </div>
     </section>
-    <!------------->
     <section class="section-padding">
         <div class="container">
             <div class="row">
@@ -196,7 +194,6 @@
             </div>
         </div>
     </section>
-    <!------------->
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
     <script src="resources/js/script.js"></script>

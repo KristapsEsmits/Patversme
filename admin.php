@@ -37,7 +37,6 @@ $visits = $row_visits["total_visits"];
 $planed_visits = $row_planed_visits["planed_visits"];
 $past_visits = $row_past_visits["past_visits"];
 $adopted = $row_adopted["total_adopted"];
-
 ?>
 
 <!DOCTYPE html>

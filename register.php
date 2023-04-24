@@ -56,7 +56,6 @@ if (Input::exists()) {
         if ($validation->passed()) {
             //Gives access to database
             $user = new User();
-
             $salt = Hash::salt(32);
 
             try {
@@ -72,7 +71,6 @@ if (Input::exists()) {
                         'group' => 1
                     )
                 );
-
                 Session::flash('home', 'Reģistrācija veiksmīgi pabeigta!');
                 Redirect::to('index.php');
             } catch (Exception $e) {
@@ -162,7 +160,6 @@ if (Input::exists()) {
                     </div>
 
                 </form>
-
                 <div class="login-signup">
                     <span class="text">Esi jau reģistrējies?
                         <a href="login.php" class="text signup-link">Ienākt</a>

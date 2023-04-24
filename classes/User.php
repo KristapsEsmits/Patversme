@@ -84,16 +84,11 @@ class User
                         } else {
                             $hash = $hashCheck->results()[0]->hash;
                         }
-
                         Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
-
-
                     }
-
                     return true;
                 }
             }
-
         }
         return false;
     }

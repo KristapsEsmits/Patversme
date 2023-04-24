@@ -37,7 +37,6 @@ if (Input::exists()) {
         die($e->getMessage());
     }
 }
-
 ?>
 
 <!DOCTYPE html>

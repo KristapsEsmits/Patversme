@@ -36,7 +36,6 @@ if (Input::exists()) {
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

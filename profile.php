@@ -6,7 +6,6 @@ if ($user->isLoggedIn()) {
 } else {
     Redirect::to('index.php');
 }
-
 ?>
 
 <!DOCTYPE html>

@@ -37,7 +37,6 @@ $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= C
 $result1 = mysqli_query($con, $query);
 $query2 = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date < CURDATE()";
 $result2 = mysqli_query($con, $query2);
-
 ?>
 
 <!DOCTYPE html>

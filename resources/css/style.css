@@ -27,7 +27,7 @@ html, body {
 	padding: 60px 0;
 }
 
-.navmargin{
+.navmargin {
 	margin-top: 100px;
 	padding-bottom: 20px;
 }
@@ -67,7 +67,7 @@ html, body {
 	z-index: 1;
 }
 
-.navbar{
+.navbar {
 	font-size: 18px;
 	font-weight: 500;
 	color: #000;
@@ -100,14 +100,14 @@ html, body {
 	font-size: 20px;
 }
 
-.logo{
+.logo {
 	padding-top: 15px;
     float: right;
     color: rgb(0, 0, 0);
     font-size: 2rem;
 }
 
-span{
+span {
     color: rgb(170, 18, 18);
 }
 
@@ -117,28 +117,28 @@ span{
     height: 3rem;
 }
 
-.cover{
+.cover {
 	width: 100%;
 	height:100%;
 }
 
-#border{
+#border {
 	border-right: 1px solid #d2d1d3;
 }
 
-.round{
+.round {
 	width: 128px;
     height: 128px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.minilogo{
+.minilogo {
 	float: left;
 	padding-top: 25px;
 }
 
-.floatright{
+.floatright {
 	float: right;
 }
 
@@ -196,11 +196,11 @@ span{
     cursor: pointer;
 }
 
-.mid{
+.mid {
 	top: 50%
 }
 
-.atstarpenahuj{
+.atstarpenahuj {
 	margin-right :20px;
 }
 
@@ -225,11 +225,11 @@ span{
 		width: 100%;
 	}
 
-	#border{
+	#border {
 		border-right: none;
 	}
-
 }
+
 @media only screen and (max-width: 767px) {
 	.carousel-caption {
 		bottom: 125px;
@@ -262,8 +262,7 @@ span{
 		margin-bottom: 30px;
 	}
 
-	#border{
+	#border {
 		border-right: none;
 	}
-
 }
