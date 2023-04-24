@@ -110,11 +110,15 @@ if (Input::exists()) {
                         <p><strong>Apraksts:</strong>
                             <?php echo $animal->description; ?>
                         </p>
-                        <?php if ($user->isLoggedIn() && empty($result) && $animal->available == 1) { ?>
-                            <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
-                        <?php } else { ?>
-                            <p><strong>Info: </strong>Pie dzīvnieka pašlaik nevar pieteikt vizīti</p>
-                            <?php
+                        <?php if ($user->isLoggedIn()) {
+                            //Check if the user has upcoming visits
+                            $query = "SELECT * FROM visit WHERE id = " . $user->data()->id . " AND date >= CURDATE()";
+                            $result = mysqli_query($con, $query);
+                            if (mysqli_num_rows($result) == 0 && $animal->available == 1) {
+                                //Show the button only if the user has no upcoming visits and the animal is available
+                                ?>
+                                <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                            <?php }
                         } ?>
                     </div>
                 </div>
