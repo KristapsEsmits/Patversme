@@ -138,6 +138,10 @@ span{
 	padding-top: 25px;
 }
 
+.floatright{
+	float: right;
+}
+
 .carousel-inner:before {
 	content: "";
 	display: block;

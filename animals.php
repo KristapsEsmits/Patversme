@@ -30,7 +30,11 @@ include 'includes/databaseCon.php';
     <?php include 'includes/nav.php'; ?>
     <div class="content">
         <div class="container">
-            <h2 class="mb-5">Dzīvnieki</h2>
+            <div>
+                <button class="btn btn-primary floatright" onclick="window.location.href='updateanimal.php'">Mainīt
+                    pieejamību</button>
+                <h2>Dzīvnieki</h2>
+            </div>
             <table class="table custom-table">
                 <thead>
                     <tr>

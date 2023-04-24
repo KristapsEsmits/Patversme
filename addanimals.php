@@ -127,7 +127,6 @@ if (Input::exists()) {
                                 <option value="cits">cits</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div class="field">

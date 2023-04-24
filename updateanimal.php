@@ -10,34 +10,20 @@ if (!$user->isLoggedIn() || !$user->hasPermission('admin')) {
 }
 
 if (Input::exists()) {
-    $userID = Input::get('userID');
     $animalID = Input::get('animalID');
 
-    $adopted = new Adopted;
-    try {
-        $adopted->create(
-            array(
-                'userID' => $userID,
-                'animalID' => $animalID,
-                'date' => date('Y-m-d H:i:s')
-            )
-        );
-    } catch (Exception $e) {
-        die($e->getMessage());
-    }
     try {
         $animals->updateAnimal(
             $animalID,
             array(
-                'available' => 3
+                'available' => Input::get('available'),
             )
         );
-        Redirect::to('index.php');
+        Redirect::to('animals.php');
     } catch (Exception $e) {
         die($e->getMessage());
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -58,34 +44,28 @@ if (Input::exists()) {
     <?php include 'includes/nav.php'; ?>
     <div class="navmargin">
         <div class="container">
-            <h2 class="mb-5">Dzīvnieka adopcija</h2>
+            <h2 class="mb-5">Dzīvnieka pieeejamības maiņa</h2>
             <form method="post" action="">
-                <div class="form-group">
-                    <label for="userID">Lietotājs:</label>
-                    <select class="form-control" id="userID" name="userID">
-                        <?php
-                        $query = "SELECT * FROM users";
-                        $result = mysqli_query($con, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?>     <?php echo $row['surname']; ?>
-                                (+371-<?php echo $row['phone']; ?>)</option>
-                        <?php } ?>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label for="animalID">Dzīvnieks:</label>
                     <select class="form-control" id="animalID" name="animalID">
                         <?php
-                        $query = "SELECT * FROM animals WHERE available != 3";
+                        $query = "SELECT * FROM animals";
                         $result = mysqli_query($con, $query);
                         while ($row = mysqli_fetch_array($result)) {
                             ?>
-                            <option value="<?php echo $row['animalID']; ?>"><?php echo $row['animalID']; ?>. <?php echo $row['name']; ?></option>
+                            <option value="<?php echo $row['animalID']; ?>"><?php echo $row['animalID']; ?>. <?php echo $row['name']; ?> </option>
                         <?php } ?>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4">Veikt adopciju</button>
+                <div class="form-group">
+                    <label for="available">Dzīvnieks:</label>
+                    <select class="form-control" id="available" name="available">
+                        <option value="1">Pieejams</option>
+                        <option value="0">Nepieejams</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Mainīt pieejamību</button>
             </form>
         </div>
     </div>
