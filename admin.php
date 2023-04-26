@@ -56,26 +56,24 @@ $adopted = $row_adopted["total_adopted"];
 <body>
     <?php include 'includes/nav.php'; ?>
     <div class="container">
-        <div class="navmargin mid">
-
-            <div class="content">
-                <h2>Opcijas:</h2>
-                <div class=" d-flex justify-content-center">
-                    <button class="btn btn-primary mr-3 mb-2 atstarpenahuj"
-                        onclick=" window.location.href='addanimals.php'">Pievienot
-                        dzīvnieku</button>
-                    <button class="btn btn-primary mr-3 mb-2 atstarpenahuj"
-                        onclick=" window.location.href='animals.php'">Apskatīt
-                        dzīvniekums</button>
-                    <button class="btn btn-primary mr-3 mb-2 atstarpenahuj"
-                        onclick=" window.location.href='users.php'">Apskatīt
-                        lietotājus</button>
-                    <button class="btn btn-primary mr-3 mb-2 atstarpenahuj"
-                        onclick=" window.location.href='allVisits.php'">Apskatīt
-                        vizītes</button>
-                    <button class="btn btn-primary mr-3 mb-2" onclick=" window.location.href='final.php'">Dzīvnieka
-                        adopcija</button>
+        <div class="navmargin">
+            <div class="card">
+                <div class="content pt-4 ml-4 mb-3">
+                    <h2 style="margin-left: 40px;">Opcijas:</h2>
+                    <div class="content d-flex justify-content-center flex-wrap">
+                        <button class="btn btn-outline-dark mr-3 mb-4 atstarpenahuj"
+                            onclick="window.location.href='addanimals.php'">Pievienot dzīvnieku</button>
+                        <button class="btn btn-outline-dark mr-3 mb-4 atstarpenahuj"
+                            onclick="window.location.href='animals.php'">Apskatīt dzīvniekums</button>
+                        <button class="btn btn-outline-dark mr-3 mb-4 atstarpenahuj"
+                            onclick="window.location.href='users.php'">Apskatīt lietotājus</button>
+                        <button class="btn btn-outline-dark mr-3 mb-4 atstarpenahuj"
+                            onclick="window.location.href='allVisits.php'">Apskatīt vizītes</button>
+                        <button class="btn btn-outline-dark mr-3 mb-4"
+                            onclick="window.location.href='final.php'">Dzīvnieka adopcija</button>
+                    </div>
                 </div>
+
             </div>
             <div class="content">
                 <div class="row rinda d-flex justify-content-center pt-4">
@@ -123,7 +121,7 @@ $adopted = $row_adopted["total_adopted"];
                     <div class="col-lg-4 mb-4">
                         <div class="card text-light text-center mx-auto">
                             <div class="card-body text-dark">
-                                <h3 class="card-title py-2 text-center">Gaidāmās vizītes</h3>
+                                <h3 class="card-title py-2 text-center">Notikušās vizītes</h3>
                                 <p class="card-text">
                                     <?php echo "Patversmē ir bijušas: " . $past_visits . " vizītes"; ?>
                                 </p>
@@ -143,6 +141,7 @@ $adopted = $row_adopted["total_adopted"];
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <?php include 'includes/footer.php' ?>
     <script src="resources/js/bootstrap.bundle.min.js">
