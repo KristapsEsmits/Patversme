@@ -5,8 +5,8 @@ let myCarousel = document.querySelector('#carousel')
   })
 //////////////////////////////////////////////////////////////////////////////////////////////
 function toggleChipNumber() {
-    var chipCheckbox = document.getElementById("chip");
-    var chipNumberField = document.getElementById("chipNumberField");
+    let chipCheckbox = document.getElementById("chip");
+    let chipNumberField = document.getElementById("chipNumberField");
 
     if (chipCheckbox.checked == true) {
         chipNumberField.style.display = "block";
@@ -66,7 +66,8 @@ document.querySelectorAll('[data-name]').forEach(function(select) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 function showForm() {
-    var form = document.getElementById("form");
+    let form = document.getElementById("form");
+    document.getElementById("visitBtn").style.display = "none";
     if (form.style.display === "none") {
         form.style.display = "block";
     } else {

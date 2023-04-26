@@ -85,7 +85,7 @@ if (Input::exists()) {
     } else {
         ?>
         <div class="navmargin">
-            <div class="col-lg-3 m-auto pb-5 pt-4">
+            <div class="col-lg-3 m-auto pb- pt-4">
                 <div class="card text-light">
                     <div class="card-body text-dark">
                         <h3 class="card-title">
@@ -117,22 +117,24 @@ if (Input::exists()) {
                             if (mysqli_num_rows($result) == 0 && $animal->available == 1) {
                                 //Show the button only if the user has no upcoming visits and the animal is available
                                 ?>
-                                <button class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                                <button id="visitBtn" class="btn bg-warning text-dark" onclick="showForm()">Pieteikt vizīti</button>
+                                <div class="mt-3">
+                                    <form id="form" style="display: none;" action="" method="post">
+                                        <input type="hidden" name="animalID" value="<?php echo escape($animal->animalID); ?>">
+                                        <label for="date">Izvēlieties datumu:</label>
+                                        <input type="date" id="date" name="date" required min="<?php echo date('Y-m-d'); ?>"
+                                            max="<?php echo date('Y-m-d', strtotime('+5 days')); ?>">
+                                        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                                        <div class="field button">
+                                            <input type="submit" class="btn bg-warning text-dark" value="Pieteikt vizīti">
+                                        </div>
+                                    </form>
+                                </div>
                             <?php }
                         } ?>
                     </div>
                 </div>
             </div>
-            <form id="form" style="display: none;" action="" method="post">
-                <input type="hidden" name="animalID" value="<?php echo escape($animal->animalID); ?>">
-                <label for="date">Izvēlieties datumu:</label>
-                <input type="date" id="date" name="date" required min="<?php echo date('Y-m-d'); ?>"
-                    max="<?php echo date('Y-m-d', strtotime('+5 days')); ?>">
-                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                <div class="field button">
-                    <input type="submit" value="Pieteikt vizīti">
-                </div>
-            </form>
         </div>
         <?php
     }
